@@ -2,11 +2,11 @@
 """LinkedIn public job search (guest endpoints, no login). Standard library only.
 
 Search (prints: id | title | company | location | posted date):
-  python3 scripts/li.py search "revenue operations" "Porto, Portugal" --days 3
-  python3 scripts/li.py search "GTM engineer" "European Union" --days 3 --remote
+  python3 li.py search "revenue operations" "Porto, Portugal" --days 3
+  python3 li.py search "GTM engineer" "European Union" --days 3 --remote
 
-Fetch full descriptions (one .txt per id in --out):
-  python3 scripts/li.py detail 4370672271 4413028604 --out jobs-cache
+Fetch full descriptions (one .txt per id in --out), incl. posted age and applicant count:
+  python3 li.py detail 4370672271 4413028604 --out jobs-cache
 """
 import argparse, html, os, re, sys, time, urllib.parse, urllib.request, urllib.error
 
@@ -80,6 +80,8 @@ def detail(ids, out):
             crit = " / ".join(f"{clean(a)}: {clean(b)}" for a, b in re.findall(
                 r"description__job-criteria-subheader[^>]*>(.*?)</h3>\s*<span[^>]*>(.*?)</span>", page, re.S))
             closed = "No longer accepting applications" in page
+            posted = grab(page, r"posted-time-ago__text[^>]*>(.*?)<")
+            applicants = grab(page, r"num-applicants__caption[^>]*>(.*?)<") or grab(page, r"num-applicants__figure[^>]*>(.*?)<")
             m = re.search(r"show-more-less-html__markup[^>]*>(.*?)</div>", page, re.S)
             desc = m.group(1) if m else ""
             desc = re.sub(r"<br\s*/?>", "\n", desc)
@@ -87,11 +89,14 @@ def detail(ids, out):
             desc = desc.replace("<li>", "- ")
             desc = html.unescape(re.sub(r"<[^>]+>", "", desc))
             desc = re.sub(r"(\n\s*){3,}", "\n\n", desc)
-            text = f"### {title} | {company} | {loc}\n{crit}\n{'CLOSED: no longer accepting applications' if closed else ''}\nhttps://www.linkedin.com/jobs/view/{jid}\n\n{desc}"
+            text = (f"### {title} | {company} | {loc}\n{crit}\n"
+                    f"Posted: {posted or 'unknown'} | Applicants: {applicants or 'unknown'}"
+                    f"{' | CLOSED: no longer accepting applications' if closed else ''}\n"
+                    f"https://www.linkedin.com/jobs/view/{jid}\n\n{desc}")
             path = os.path.join(out, f"{jid}.txt")
             with open(path, "w", encoding="utf-8") as f:
                 f.write(text)
-            print(f"{jid} ok {len(text)} chars | {title} | {company}{' | CLOSED' if closed else ''}")
+            print(f"{jid} ok {len(text)} chars | {title} | {company} | posted {posted or '?'} | {applicants or '?'}{' | CLOSED' if closed else ''}")
         except Exception as e:  # keep going on individual failures
             print(f"{jid} ERR {e}")
         time.sleep(1.2)
