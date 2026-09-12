@@ -1,0 +1,27 @@
+# LinkedIn job IDs already reviewed (one per line, optional note after a space)
+4370672271 Revolut Ops Manager Revenue Porto - shortlisted
+4413028604 Revolut Sales Enablement Porto - 5+ yrs
+4462570369 iLoF Business/Ops Associate - applied
+4463491831 RWS Growth Campaign Strategist - 6+ yrs
+4462849517 Laskasas Performance Marketing - paid media specialist
+4461747617 Gizz AI Systems Lead Viseu - shortlisted
+4447519356 Gizz AI Systems Lead Braga - duplicate
+4465816240 team.blue CX Integrations Manager - people mgmt/CMS
+4430701962 Pleo RevOps Performance Analyst - SQL/stats
+4459322354 Unit4 Renewals & Deal Desk Ops - maybe
+4462240086 Air Apps CRM Specialist - 3+ yrs, bans AI
+4463861900 Bolt Strategy & Ops Manager - 5+ yrs
+4462848847 Billdu UA/Growth Manager - mobile UA
+4464678813 Samlino Growth Manager - maybe
+4466364525 Convatec CRM & Reporting Analyst - MS Dynamics
+4453675196 Telnyx GTM Systems & Automation Lead - 5+ yrs
+4451557987 Kerry Digital Campaign Ops Specialist - shortlisted
+4464508003 Google Account Strategist Portugal - applied
+4466354916 Salesforce AE SMB Portugal - quota required
+4443947420 Datadog Commercial AE Portugal - quota required
+4458261602 MongoDB Marketing Ops Manager - 5+ yrs
+4462163938 Korber Commercial Ops Support Junior - billing/SAP
+4460977517 Korber Campus Porto Commercial Ops Support - duplicate
+4438820503 Nitro RevOps Manager Channel - 5+ yrs Salesforce
+4464460732 Poka Senior RevOps Specialist - 5+ yrs
+4456891085 Harvey GTM Systems Administrator EMEA - applied
