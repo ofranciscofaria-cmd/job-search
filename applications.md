@@ -4,11 +4,11 @@ Keep one row per application. Status values: applied, in process, interview, ass
 
 | Company | Role | Location | Applied | Status | Last update | Next action |
 |---|---|---|---|---|---|---|
-| Hostaway | Lead AI GTM Engineer | Remote EU | before 2026-09-12 | applied | - | - |
-| Clarasight | Founding Revenue Operations Lead | Lisbon | before 2026-09-12 | applied | - | - |
-| Harvey | GTM Systems Administrator EMEA | Dublin | before 2026-09-12 | applied | - | - |
-| Google | Account Strategist, SBS Engage, Portugal | Dublin | 2026-09-12 | applied | 2026-09-12 | wait |
-| iLoF | Business/Ops Associate (AI builder) | Porto | 2026-09-12 | applied | 2026-09-12 | wait |
+| Hostaway | Lead AI GTM Engineer | Remote EU | before 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
+| Clarasight | Founding Revenue Operations Lead | Lisbon | before 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
+| Harvey | GTM Systems Administrator EMEA | Dublin | before 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
+| Google | Account Strategist, SBS Engage, Portugal | Dublin | 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
+| iLoF | Business/Ops Associate (AI builder) | Porto | 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
 
 ## Shortlisted, not applied
 - Kerry: Digital Campaign Operations Specialist, Naas IE (linkedin.com/jobs/view/4451557987)
@@ -17,3 +17,4 @@ Keep one row per application. Status values: applied, in process, interview, ass
 
 ## Event log
 - 2026-09-12: Applied Google (with cover letter) and iLoF (with message to hiring team).
+- 2026-09-12: Inbox check. Application-received acknowledgements from Hostaway, Clarasight, Harvey, Google and iLoF. No interviews, assessments, offers or rejections yet.
