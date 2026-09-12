@@ -25,3 +25,28 @@
 4438820503 Nitro RevOps Manager Channel - 5+ yrs Salesforce
 4464460732 Poka Senior RevOps Specialist - 5+ yrs
 4456891085 Harvey GTM Systems Administrator EMEA - applied
+4466305109 Gainable Junior GTM Engineer Malmo/remote - worth applying, SQL/scripting gap
+4429507977 Enpal RevOps Analyst Milan - worth applying, Italian language risk
+4456209622 Quadient Marketing Ops Project Coordinator Czechia - office based, not remote
+4410077534 Factorial CX Account Manager Portuguese Market Barcelona - worth applying
+4438246791 Factorial Portuguese-speaking talent pool - generic posting, not a real vacancy
+4464848967 Vertuoza Marketing Ops Belgium - French required, 3+ yrs
+4465127804 Onomondo Growth Ops Specialist Copenhagen - maybe, internship tag vs senior scope
+4464220713 Nexo Marketing Ops Specialist Sofia - SQL required
+4466032909 Hager Marketing Automation Platform Specialist Paris - 5-10 yrs
+4464571142 Jobgether Marketing & GTM Ops Specialist remote EU - worth applying
+4428250868 Make GTM Engineer Revenue Programs Madrid - too senior, deep Salesforce/Snowflake
+4463494109 Chift API GTM Engineer Brussels - worth applying
+4466055127 Patterno GTM Engineer Hamburg - German required
+4463473003 simplyblock GTM Engineer Poland - relocation required
+4421716767 Voyado GTM Engineer Stockholm - office based, relocation
+4465626387 Sword Health Marketing Ops Lead Portugal - maybe, SQL requirement vs great stack/pay fit
+4466323116 Precis RevOps Specialist Stockholm - Swedish required, 4+ yrs
+4466328442 Coalition RevOps Analyst Munich - German required
+4463483559 HR Path Marketing Specialist Dublin - native English speaker required
+4463432898 Air Apps User Acquisition Specialist Lisbon - 4+ yrs, bans AI
+4457501434 GE HealthCare Application Specialist PCS Porto - maybe, heavy travel
+4466317011 Antverpia AI Builder Belgium - Dutch required, coding
+4464536464 Straker AI Ops Agent Engineer Ireland - Python required
+4417613821 Roboyo Intelligent Automation Engineer Barcelona - French required, 4+ yrs
+4465621026 Cisco Sales Ops Manager EMEA Oeiras - 8+ yrs, people management
