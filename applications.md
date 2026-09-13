@@ -10,19 +10,19 @@ Keep one row per application. Status values: applied, in process, interview, ass
 | Google | Account Strategist, SBS Engage, Portugal | Dublin | 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
 | iLoF | Business/Ops Associate (AI builder) | Porto | 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
 | Jobgether | Marketing & GTM Ops Specialist | Netherlands (remote) | 2026-09-12 | applied | 2026-09-13 | wait (under review) |
+| MyGamePlan | GTM Engineer | Leuven BE | 2026-09-13 | applied | 2026-09-13 | wait; emailed info@mygameplan.ai (CV Canva DAHVFVrp7Zg). Follow up ~2026-09-22 if no reply |
 
 ## To apply (recommended, not yet applied)
 Keep every role here until Francisco applies (move it to the table) or says it is not relevant (move it to Dropped with the reason). Never remove a role on your own. Before tailoring, re-check the posting is still open; if closed, move it to Dropped as "closed".
 
 | Priority | Company | Role | Location | LinkedIn | Added | Why | Watch out |
 |---|---|---|---|---|---|---|---|
-| 1 | MyGamePlan | GTM Engineer | Leuven BE, flexible | linkedin.com/jobs/view/4464305298 | 2026-09-13 | AI outbound + AI-maintained CRM, mirrors his Bizzy work; no years stated | pay not stated; small startup |
-| 2 | Kipling (VF Corp) | Analyst, Sales Operations EMEA | Antwerp BE, on-site | linkedin.com/jobs/view/4451178335 | 2026-09-13 | EUR 41.8-52.2k, stays in Belgium, junior-friendly, English | reporting/SAP admin more than building; 133 applicants |
-| 3 | simplyblock | GTM Engineer | Berlin, office 4 days | linkedin.com/jobs/view/4466051058 | 2026-09-13 | 1-2 years GTM automation (n8n, APIs), Claude-native | relocate to Berlin asap; pay not stated |
-| 4 | Navera | Revenue Operations Specialist | Berlin, office-first | linkedin.com/jobs/view/4463017529 | 2026-09-13 | EUR 50-65k, HubSpot owner role | asks 3+ years |
-| 5 | Factorial | CRM & Growth Specialist, Global Expansion | Barcelona | linkedin.com/jobs/view/4455702427 | 2026-09-13 | HubSpot workflows, AI-curious, 2-4 years | pay not stated, may be low; 160 applicants |
-| 6 | Kerry | Digital Campaign Operations Specialist | Naas IE, 3 days office | linkedin.com/jobs/view/4451557987 | 2026-09-12 | 1-4 years, campaign ops | Marketo not HubSpot |
-| 7 | Revolut | Operations Manager (Revenue) | Porto | linkedin.com/jobs/view/4370672271 | 2026-09-12 | junior to lead level, Porto | generic ops scope; tough process |
+| 1 | Kipling (VF Corp) | Analyst, Sales Operations EMEA | Antwerp BE, on-site | linkedin.com/jobs/view/4451178335 | 2026-09-13 | EUR 41.8-52.2k, stays in Belgium, junior-friendly, English | reporting/SAP admin more than building; 134 applicants |
+| 2 | simplyblock | GTM Engineer | Berlin, office 4 days | linkedin.com/jobs/view/4466051058 | 2026-09-13 | 1-2 years GTM automation (n8n, APIs), Claude-native | relocate to Berlin asap; pay not stated |
+| 3 | Navera | Revenue Operations Specialist | Berlin, office-first | linkedin.com/jobs/view/4463017529 | 2026-09-13 | EUR 50-65k, HubSpot owner role | asks 3+ years |
+| 4 | Factorial | CRM & Growth Specialist, Global Expansion | Barcelona | linkedin.com/jobs/view/4455702427 | 2026-09-13 | HubSpot workflows, AI-curious, 2-4 years | pay not stated, may be low; 160 applicants |
+| 5 | Kerry | Digital Campaign Operations Specialist | Naas IE, 3 days office | linkedin.com/jobs/view/4451557987 | 2026-09-12 | 1-4 years, campaign ops | Marketo not HubSpot |
+| 6 | Revolut | Operations Manager (Revenue) | Porto | linkedin.com/jobs/view/4370672271 | 2026-09-12 | junior to lead level, Porto | generic ops scope; tough process |
 
 ## On hold
 - Chift: GTM Engineer, Brussels (linkedin.com/jobs/view/4463494109). CV ready (Canva DAHVBiQ1O-I). On hold for discretion: co-founder studied with Bizzy CEO Hendrik. Revisit around 2026-09-27 or once further along elsewhere.
@@ -36,3 +36,4 @@ Keep every role here until Francisco applies (move it to the table) or says it i
 - 2026-09-12: Inbox check. Application-received acknowledgements from Hostaway, Clarasight, Harvey, Google and iLoF. No interviews, assessments, offers or rejections yet.
 - 2026-09-13: Inbox check. Found a previously untracked LinkedIn Easy Apply application to Jobgether (Marketing & GTM Ops Specialist, Netherlands) submitted 2026-09-12; added to table. Jobgether confirms the profile is under review, no action requested. No interviews, assessments, offers or rejections.
 - 2026-09-13: To-apply list created from the 2026-09-13 scan plus earlier shortlist; Chift put on hold; Gizz and Onomondo dropped.
+- 2026-09-13: Applied MyGamePlan GTM Engineer by email to info@mygameplan.ai (application listed on their website), tailored CV + personal email (football motivation, AI-first team, outbound/CRM/website proof). Removed from To apply.
