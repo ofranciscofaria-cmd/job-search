@@ -47,7 +47,13 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
    - `LBJJZ0XnfhfzJpPK` Vlerick bullet
    - `LBCBs29kWZK38VS2` languages
 4. Rewrite for the role: mirror the posting's own words where true; summary about him, not a tool list; lead Bizzy bullets with what the role cares about; reorder skills. Contact: number of the job's country first; location line like "Ghent, Belgium (open to relocate to Dublin)" or "(remote across Europe)".
-5. Check layout: Bizzy bullets must stay 4 bullets of similar length or they overlap La Lorraine. Compare each changed box's top + height with the top of the element below. Look at the thumbnail. Fix overflow by cutting words, not moving boxes.
+5. Re-flow the left column (Francisco does this by hand otherwise, so always do it). Text boxes change height after rewriting, which leaves white gaps or overlaps. The left column is three blocks; move every element of a block by the same vertical delta:
+   - Block 1, About me (fixed): summary `LBcVTWmYTBHGt5cK` stays at top 252.7. Its bottom = top + height.
+   - Block 2, Education: bar `LBR4Cvz1bn3Q7N2F` (block top), heading `LB2DRGpZ3fmN8C1F`, Vlerick group `LBwq4J6YfbHGNDJr`, `LBJJZ0XnfhfzJpPK`, IPAM `LBzyv3qlHbhhmT1n`, `LBmCBJpqCQpFnj8c`, `LBdNHbQgJY0nwNFc`, Romanian-American `LBVpYWD29qTgBvqZ`, Erasmus line `LBtBg4GHc72dv8xw` (its bottom is the block bottom).
+   - Block 3, Work experience: bar `LBKRGTVSshcn13cm` (block top), heading `LBpT9Yw3tp54rQn3`, then entries Bizzy (`LBvqhnMK4w5R5ryF` name, `LBc2cpTXc5LFqm7g` text), La Lorraine (`LBMl2bYZWMxFKlV4`, `LBRPhMWSZ8W3NzJ2`), Blisq (`LBVlPpjGCyCQzPGj`, `LBdms3xx2gmJPX3V`). Inside the block keep a 9 px gap between one entry's text bottom and the next entry's name top, and the name box directly above its text (text top = name top + about 22.7).
+   - Target: bottom of the Blisq text (`LBdms3xx2gmJPX3V` top + height) must equal the bottom of the Languages box on the right (`LBCBs29kWZK38VS2` top + height, about 1107). Use the SAME gap G above the Education bar and above the Work bar (summary bottom + G = Education bar top; Erasmus bottom + G = Work bar top), and solve for G. His reference layout has G = 20.
+   - If G would be under 14, shorten text (usually a Bizzy or Blisq bullet) instead of cramping. If G would be over 28, use 28 and accept a slightly higher bottom. Never let any box overlap the one below.
+   - Re-read the design after moving, verify the numbers, and check the thumbnail. The right column normally stays as is; only check that Skills (`LB2zrHmxSW4XDrqF`) does not overlap the Interests bar (top about 817.7).
 6. Commit: `edit-design` with `finalize: "commit"` and no operations. Edits are invisible until committed.
 7. Rename to "CV - Francisco Faria x <Company>", export PDF (A4), send him the Canva link and the PDF link. Mention any formatting glitch he must fix by hand (e.g. bold bleeding into a line).
 
