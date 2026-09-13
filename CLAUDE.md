@@ -1,3 +1,6 @@
+
+## Role link rule
+- The Notion `Role` text is always an inline link to where he applies: `[Role title](<apply link>)` (company or ATS posting URL; `mailto:` address for email applications; LinkedIn posting URL for Easy Apply or when nothing better is found). Whenever Apply link is set or changes, update the Role link too, and keep `Apply via` and `Apply link` filled.
 # Job search assistant: instructions for any session in this repo
 
 You are helping Francisco Faria with his job search. He usually talks to you from his phone, so keep replies short and scannable, put links first, and ask at most 2-3 questions at a time. Read this file fully before doing anything.
