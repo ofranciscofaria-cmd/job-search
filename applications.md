@@ -9,6 +9,7 @@ Keep one row per application. Status values: applied, in process, interview, ass
 | Harvey | GTM Systems Administrator EMEA | Dublin | before 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
 | Google | Account Strategist, SBS Engage, Portugal | Dublin | 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
 | iLoF | Business/Ops Associate (AI builder) | Porto | 2026-09-12 | applied | 2026-09-12 | wait (ack received) |
+| Jobgether | Marketing & GTM Ops Specialist | Netherlands (remote) | 2026-09-12 | applied | 2026-09-13 | wait (under review) |
 
 ## Shortlisted, not applied
 - Kerry: Digital Campaign Operations Specialist, Naas IE (linkedin.com/jobs/view/4451557987)
@@ -18,3 +19,4 @@ Keep one row per application. Status values: applied, in process, interview, ass
 ## Event log
 - 2026-09-12: Applied Google (with cover letter) and iLoF (with message to hiring team).
 - 2026-09-12: Inbox check. Application-received acknowledgements from Hostaway, Clarasight, Harvey, Google and iLoF. No interviews, assessments, offers or rejections yet.
+- 2026-09-13: Inbox check. Found a previously untracked LinkedIn Easy Apply application to Jobgether (Marketing & GTM Ops Specialist, Netherlands) submitted 2026-09-12; added to table. Jobgether confirms the profile is under review, no action requested. No interviews, assessments, offers or rejections.
