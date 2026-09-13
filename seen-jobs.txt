@@ -109,3 +109,9 @@
 4466051058 simplyblock GTM Engineer - worth applying: Near-exact match to his actual specialisation (Claude-native GTM/sa...
 4466060174 GRESB Revenue Operations Manager - ruled out: Requires 10+ years of experience
 4466357366 TripleTen Content Growth Manager - maybe: Strong AI/Claude tool overlap and good location
+4430701962 Pleo RevOps Performance Analyst - ruled out: Requires solid understanding of SQL, data modeling and predictive statistics
+4465478845 Ignite GTM Engineer (Fully Remote) - ruled out: Requires minimum B2 German proficiency (otherwise near-exact tool/lane/pay match)
+4447153742 Sculpted by Aimee Marketing Operations Lead - ruled out: Requires minimum 10+ years experience despite "Lead" title suggesting less
+4428807811 deepset Growth Marketing Lead - ruled out: Requires Python scripting and comfort with data workflows, plus 3+ years is a stretch
+4427858373 JetBrains Growth manager (JetBrains AI) - ruled out: Product-led growth/onboarding-funnel lane, not his RevOps/GTM-ops specialisation
+4466340420 Randstad Portugal GTM Revenue Operations Analyst - maybe: 3+ years is a stretch, agency-recruited generic-sounding SAP placement, pay unstated
