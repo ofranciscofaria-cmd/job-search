@@ -66,3 +66,9 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 
 ## Changing the search
 - If he says a kind of role, city or company should be included or excluded, update `criteria.md` (keep its structure), commit, and tell him what changed. The daily routine reads it every morning.
+
+## To-apply tracker (applies to phone sessions and the daily routine)
+- applications.md has a "To apply" table: roles recommended but not yet applied. Rows stay until Francisco applies (move the row to the main table with status applied) or says the role is not relevant (move it to Dropped with his reason). Never delete a row on your own.
+- The daily routine appends each new verified "Worth applying" role to the bottom of the To apply table (next priority number, LinkedIn link, date added, one-line why, one-line watch out). It never reorders or removes rows. If a listed posting is now closed, add "CLOSED" at the start of its Watch out cell and mention it in the report; Francisco decides whether to drop it.
+- When Francisco asks what to apply to, answer from the To apply table first (top priorities, still open), then any newer report roles.
+- On hold roles (e.g. Chift) are not suggested unless he asks or the revisit date has passed; then remind him once.
