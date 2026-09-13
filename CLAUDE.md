@@ -10,9 +10,21 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
   - All roles (dedupe by Job ID, read My take / My feedback): `https://www.notion.so/fd4f185d76f7430ead65f7dd7b9bdb18?v=3da9eb9ad2da81f6a26f000c3ea0b5b3`
 - Status values: New, Approved, Changes requested, CV ready, Applied, Interview, Assessment, Offer, Rejected, Not relevant, On hold, Closed.
   - Routines set: New (morning scan), CV ready (builder), Interview/Assessment/Offer/Rejected (from emails), Closed (posting closed).
-  - Francisco sets: Approved, Not relevant, On hold, Changes requested, Applied. Never overwrite his fields: My take, My feedback, Application needs, Questions / notes, Revision notes.
+  - Francisco sets: Approved, Not relevant, On hold, Changes requested, Applied. Never overwrite his fields: My take, My feedback, Application needs, Quick note, Revision notes.
 - Dates use `date:<Property>:start` (YYYY-MM-DD). Always set `Last update` when changing a row.
 - Page URL for a row: `https://www.notion.so/<page id without dashes>`.
+- Row page body layout (always keep this order):
+  1. `## My input` (Francisco writes here; NEVER edit or delete this section): "Questions to answer" (one form question per line, exactly as the form asks) and "Notes for the CV and texts" (motivation, what to stress or leave out, word limits). Every row created by a routine must start with this section, with empty bullets. Exact template:
+     ```
+     ## My input
+     **Questions to answer** (paste each form question on its own line, exactly as written):
+     - 
+
+     **Notes for the CV and texts** (why you want it, what to stress, what to leave out, word limits):
+     - 
+     ```
+  2. `---` then the routine sections below it (role analysis from the morning scan; CV and texts from the builder).
+- Short one-line instructions can also be in the `Quick note` column. Read both.
 - When he says in chat that he applied, skipped or paused a role: update the Notion row (Status, Applied on, My feedback if he gave a reason).
 
 ## Repo map
@@ -95,9 +107,11 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 
 ## Application builder (cloud routine, several times a day)
 - Picks rows from the Builder queue view (Approved or Changes requested), one by one, oldest first.
-- Approved: re-check posting is open (li.py detail; if CLOSED set Status Closed and notify). Honest fit check. Build the CV per "Tailoring a CV" (copy base, rewrite, re-flow, commit, rename "CV - Francisco Faria x <Company>", export PDF A4). Write what Application needs asks for (Cover letter, Why us text, answers to Form questions pasted in Questions / notes, Email to send with subject line). "CV only" or empty = CV only.
-- Motivation: use his words from Questions / notes and confirmed facts only. If he gave none, write the "why" from confirmed facts and mark it "CHECK: motivation guessed, edit before sending".
-- Page body: replace the page content with sections: "## CV: what changed and why" (3-6 bullets), "## Texts" (each requested text ready to paste), "## Please confirm" (any claim or gap needing his check; omit if none), "## Revision history" (keep previous entries).
+- Approved: re-check posting is open (li.py detail; if CLOSED set Status Closed and notify). Honest fit check. Build the CV per "Tailoring a CV" (copy base, rewrite, re-flow, commit, rename "CV - Francisco Faria x <Company>", export PDF A4). Write what Application needs asks for (Cover letter, Why us text, answers to the questions under "My input", Email to send with subject line). Questions listed under My input are always answered, even if Application needs does not tick "Form questions". "CV only" or empty needs and no questions = CV only.
+- Motivation: use his words from My input notes and Quick note, plus confirmed facts only. Keep the role analysis from the morning scan below the builder sections under "## Role analysis". If he gave none, write the "why" from confirmed facts and mark it "CHECK: motivation guessed, edit before sending".
+- Inputs: Application needs; `## My input` in the page body (answer EVERY question listed under "Questions to answer", in order, each with the question as a bold line then the answer; respect any word limit he notes); Quick note.
+- Page body: keep `## My input` exactly as he wrote it at the top, then `---`, then replace everything below with sections: "## CV: what changed and why" (3-6 bullets), "## Texts" (each requested text ready to paste), "## Please confirm" (any claim or gap needing his check; omit if none), "## Revision history" (keep previous entries), "## Role analysis" (keep what was there).
+- If he writes change requests inside My input instead of Revision notes, treat them as revision notes too, but still never edit My input.
 - Changes requested: apply Revision notes to the SAME Canva design (copy-free edit, re-flow again, commit, re-export) and/or rewrite texts; append "YYYY-MM-DD: <his notes> -> <what changed>" to Revision history; clear Revision notes.
 - Then set Status CV ready, CV (Canva) edit link, attach the PDF to CV PDF (Canva export URLs expire: upload via Notion attachment from the export URL), Last update. Notify via ntfy with the Notion row link.
 - If something blocks (Canva unavailable, posting unreadable, a claim he must confirm before a CV makes sense): leave Status unchanged, write the problem at the top of the page body under "## Blocked", and notify.
