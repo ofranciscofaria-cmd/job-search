@@ -1,6 +1,6 @@
 # Francisco Faria: job search criteria
 
-Last updated: 2026-09-25 (Netherlands moved up to priority 3). Edit this file to change what the job scan looks for.
+Last updated: 2026-09-25 (Netherlands moved up to priority 3; warm countries and sponsored roles in Dubai/Asia added). Edit this file to change what the job scan looks for.
 
 ## Profile
 - Current: GTM Strategy & Operations at Bizzy (Ghent, Belgium), Jul 2025 to present. RevOps/GTM systems work, AI agents (Claude/MCP), n8n, HubSpot, Clay, Lemlist, Notion. 1M+ EUR pipeline built.
@@ -26,7 +26,13 @@ More junior titles are fine if pay clears the floor.
 6. Other visa-free EU/EEA hubs: Barcelona, Madrid, Berlin, Copenhagen, Stockholm
 - Netherlands scan (added 2026-09-25, applies on top of the routine's location list): search LinkedIn with the location "Amsterdam Area" (plain "Amsterdam" returns zero), plus Rotterdam, Utrecht, Eindhoven, The Hague, Breda and Netherlands. Amsterdam Area, Rotterdam, Utrecht and Netherlands get every keyword; the others at least 7. Keep Owlie's Netherlands roles unless written in Dutch or requiring Dutch. Dutch as "a plus" is not a rule-out. Report a per-country count so the Netherlands yield is visible.
 - Portuguese-speaking roles abroad are a strong lever: search "Portuguese speaking" / "Portuguese" in Dublin, Amsterdam Area, Rotterdam, Barcelona, Berlin.
-- No visa sponsorship needed only within EU/EEA (Portuguese citizen). UK and non-EU need a visa: skip unless the role explicitly sponsors and is Portuguese-speaking.
+7. Warm EU countries with decent pay (his wish, 2026-09-25): Malaga, Valencia, Malta (English is an official language; big iGaming CRM and marketing ops market, flag iGaming in Watch out), Limassol and Nicosia (Cyprus), Athens. Same filters as the rest of the EU.
+8. Dream destinations, ONLY with visa sponsorship: Dubai / Abu Dhabi (UAE), Singapore, Hong Kong, Kuala Lumpur, Bangkok. He would love these, but there is no point applying unless the employer clearly wants international hires. Search at least 6 keywords per city (revenue operations, marketing operations, marketing automation, CRM specialist, HubSpot, GTM operations).
+   - Worth applying or Maybe ONLY if the posting explicitly says visa sponsorship, visa provided, relocation package or support, or that international or overseas applicants are welcome. Quote the line in Why it fits.
+   - Rule out if it says local candidates only, must already be in the country or hold a valid visa or residence, nationals preferred (e.g. UAE Emiratisation roles), or says nothing about visas or relocation.
+   - Also rule out roles needing Arabic, Mandarin, Cantonese, Malay, Thai or Japanese.
+   - In Watch out, flag work-visa salary minimums that pay may not meet (e.g. Singapore Employment Pass).
+- No visa sponsorship needed only within EU/EEA and Switzerland (Portuguese citizen). UK and other non-EU countries need a visa: skip unless the role explicitly sponsors (same rule as point 8).
 
 ## Hard filters (rule out)
 - Requires French, Dutch, German, Italian or any language he lacks.
