@@ -3,7 +3,7 @@ One-time setup for the CV watcher (Windows PowerShell 5.1+, no admin, no Python)
 
 What it does from then on, in the background, every time Windows starts:
   a file downloaded as   "CV - Francisco Faria x <Company>.pdf"   (the name the builder gives the Notion CV PDF;
-  "<Company> - CV - Francisco Faria.pdf" works too)
+  "<Company> - CV - Francisco Faria.pdf" works too; Notion's underscores instead of spaces are handled)
   is moved from Downloads to   Job Search\CVs\<Company>\CV - Francisco Faria.pdf
   If that folder already has a CV (a revised version), the older one goes to Job Search\CVs\<Company>\old\.
 
@@ -49,10 +49,12 @@ function Write-Log([string]$msg) {
 Write-Log "Started. Watching $downloads"
 
 while ($true) {
-    $files = Get-ChildItem -LiteralPath $downloads -Filter '*CV - Francisco Faria*.pdf' -File -ErrorAction SilentlyContinue
+    $files = Get-ChildItem -LiteralPath $downloads -Filter '*.pdf' -File -ErrorAction SilentlyContinue
     foreach ($f in $files) {
+        # Notion downloads use underscores for spaces: CV_-_Francisco_Faria_x_FitForMe.pdf
+        $name = ($f.Name -replace '_', ' ') -replace ' {2,}', ' '
         $company = $null
-        foreach ($p in $patterns) { if ($f.Name -match $p) { $company = $Matches['co'].Trim(); break } }
+        foreach ($p in $patterns) { if ($name -match $p) { $company = $Matches['co'].Trim(); break } }
         if (-not $company) { continue }
         foreach ($c in $invalid) { $company = $company.Replace([string]$c, '') }
         if (-not $company) { continue }
@@ -79,6 +81,12 @@ while ($true) {
     Start-Sleep -Seconds 3
 }
 '@
+# Stop a watcher that is already running (so a reinstall picks up the new version)
+Get-CimInstance Win32_Process -Filter "Name = 'powershell.exe'" -ErrorAction SilentlyContinue |
+    Where-Object { $_.CommandLine -like '*cv-watcher.ps1*' } |
+    ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+Start-Sleep -Seconds 1
+
 Set-Content -LiteralPath $watcherPath -Value $watcher -Encoding UTF8
 
 # Start with Windows: shortcut in the Startup folder, hidden window
