@@ -28,6 +28,14 @@ More junior titles are fine if pay clears the floor.
 - Portuguese-speaking roles abroad are a strong lever: search "Portuguese speaking" / "Portuguese" in Dublin, Amsterdam Area, Rotterdam, Barcelona, Berlin.
 7. Warm EU countries with decent pay (his wish, 2026-09-25): Malaga, Valencia, Malta (English is an official language; big iGaming CRM and marketing ops market, flag iGaming in Watch out), Limassol and Nicosia (Cyprus), Athens. Same filters as the rest of the EU.
 Note for the daily run (Francisco, 2026-09-25): search and keep ALL locations in this section, including points 7-10, even where the routine prompt lists fewer countries; this file wins. Also triage with the Arabic/Mandarin/Cantonese/Malay/Thai language rule and the explicit visa blockers below, and add "Portuguese speaking" searches in Kuala Lumpur and Dubai.
+7b. More EU/EEA places (added 2026-09-25, no visa needed; keep only English-working-language roles that clear the pay floor):
+   - Switzerland: Zurich, Geneva, Basel, Zug (EU free movement; very high pay; many English tech/finance teams).
+   - Luxembourg (high pay; skip if French or German is required).
+   - Nordics: Oslo, Helsinki (plus Copenhagen, Stockholm above).
+   - Baltics and Central Europe English tech hubs: Tallinn, Vilnius, Riga, Warsaw, Krakow, Prague, Vienna. Pay is often lower: keep only if it clears about EUR 32k.
+   - Paris: only startups/scale-ups that state English as the working language.
+   - London: needs a visa for now (Skilled Worker). A UK-EU youth scheme is being negotiated but not open (maybe 2027); skip London unless the role explicitly sponsors.
+7c. Remote beyond the EU: roles open to "EMEA", "Europe" or "worldwide/anywhere", including US and UK companies that hire through an employer-of-record (Deel, Remote, Oyster). Keep if the time zone overlap is workable (up to about 4 pm US Eastern) and pay clears the floor.
 8. Dream destinations outside the EU (rewritten 2026-09-25 after visa research). Do NOT rule a role out just because the posting says nothing about visas: in most of these places that is normal. Judge the visa by country rules and company type instead, and add a line to Watch out: "Visa: likely / possible / unlikely, because ...". His degrees are Vlerick (private business school) and IPAM Porto: neither is on Hong Kong's Top Talent list or Singapore's top-tier list, so assume employer sponsorship is always needed. Search at least 6 keywords per city (revenue operations, marketing operations, marketing automation, CRM specialist, HubSpot, GTM operations).
    - Dubai / Abu Dhabi (UAE), also Doha (Qatar) and Riyadh (Saudi, strong matches only): the employer sponsors and pays the work visa by law for every expat, so silence about visas is fine. Visa likely at international, European or US companies, regional HQs, free-zone tech/SaaS (Dubai Internet City, DIFC, DMCC, ADGM), Big 4/consulting. Rule out only if it says must be in the country already, own visa, immediate joiner only, nationals only (Emiratisation / Saudization / Qatarization roles), or needs Arabic. Note in Watch out that EU citizens can enter visa-free for 90 days, so a job-hunt trip is possible.
    - Singapore: needs an Employment Pass: salary at least S$5,600/month at his age (about EUR 47k/year) plus 40 COMPASS points. He gets no top-university points, so the best bets are (a) small funded startups/scale-ups with fewer than 25 professional staff (they get automatic points), (b) MNCs and regional HQs with diverse teams, (c) roles paying clearly above the sector median. Rule out "Singaporeans/PRs only" ads and roles clearly paying under S$5,600. A listing on MyCareersFuture without that restriction is a good sign.
@@ -73,3 +81,12 @@ Note for the daily run (Francisco, 2026-09-25): search and keep ALL locations in
 - Good: in his lane; gaps are only nice-to-haves or a small years stretch (asks 2-3 years).
 - Stretch: in his lane but one real must-have he lacks (3+ years firmly required, a named tool as hard requirement, seniority clearly above him).
 - Do not default to Stretch. If most new rows come out Stretch, the filters above are not being applied.
+
+
+## Where Good and Strong roles come from (added 2026-09-25)
+Most rows came out Stretch because the scan finds generic big-company roles asking 3+ years. Search where his exact skills are the job:
+- HubSpot Solutions Partner agencies (RevOps/CRM implementation consultants, HubSpot specialists), worldwide and often remote.
+- Clay / GTM engineering / outbound lead-gen agencies (GTM engineer, outbound automation, Clay specialist).
+- B2B SaaS and AI start-ups/scale-ups (seed to Series C) hiring their first RevOps, marketing ops or GTM engineer.
+- Extra keywords: "HubSpot consultant", "HubSpot specialist", "HubSpot administrator", "RevOps specialist", "marketing operations specialist", "GTM engineer", "Clay", "outbound automation", "CRM automation", "AI operations", "automation specialist", "growth operations associate", and the same with "junior" or "associate".
+- Extra boards to check (best effort): RevOps Careers (revopscareers.com, HubSpot and RevOps roles) and the Clay community job board (community.clay.com, full-time jobs). Treat postings there like any other: read the full text, verify the company.
