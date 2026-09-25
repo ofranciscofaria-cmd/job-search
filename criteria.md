@@ -3,7 +3,7 @@
 Last updated: 2026-09-25 (Netherlands moved up to priority 3; warm countries and sponsored roles in Dubai/Asia added). Edit this file to change what the job scan looks for.
 
 ## Profile
-- Current: GTM Strategy & Operations at Bizzy (Ghent, Belgium), Jul 2025 to present. RevOps/GTM systems work, AI agents (Claude/MCP), n8n, HubSpot, Clay, Lemlist, Notion. 1M+ EUR pipeline built.
+- Current: GTM Strategy & Operations at Bizzy (Ghent, Belgium), Jul 2025 to present. RevOps/GTM systems work, AI agents (Claude/MCP), n8n, HubSpot, Clay, Lemlist, Notion. 1.5M+ EUR pipeline built.
 - Earlier: La Lorraine Bakery Group, Market Research & Strategy Consultant (Apr-Jun 2025); Blisq Creative (Portugal), curricular marketing internship (Feb-Jun 2024).
 - Education: Master's Marketing & Digital Transformation, Vlerick (2024-2025); Bachelor's Marketing Management, IPAM Porto (2021-2024).
 - Relevant experience: about 1.5 to 2 years. Treat roles asking 4+ years as too senior, 3 years as a stretch, 2+ years as fine.

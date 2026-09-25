@@ -47,7 +47,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 
 ## Who he is (confirmed facts only)
 - **Bizzy** (Ghent), GTM Strategy & Operations, Jul 2025 to present. Started as a digital marketing generalist, now RevOps/GTM systems.
-  - Built the "allbound" engine: HubSpot buyer intent + LinkedIn ad engagement (Fibbler) into HubSpot, qualified, researched in Clay, personalised email and LinkedIn sequences in Lemlist, sales gets call and reply tasks. n8n fills gaps. **1M+ EUR pipeline**, Lemlist campaigns average **20%+ reply rate**.
+  - Built the "allbound" engine: HubSpot buyer intent + LinkedIn ad engagement (Fibbler) into HubSpot, qualified, researched in Clay, personalised email and LinkedIn sequences in Lemlist, sales gets call and reply tasks. n8n fills gaps. **1.5M+ EUR pipeline** (older CVs and texts said 500k or 1M: always use 1.5M+), Lemlist campaigns average **20%+ reply rate**.
   - AI agents in production with Claude and MCP: reply bot (tags every Lemlist reply, logs to Notion, auto-sends simple replies, holds revenue-sensitive ones for approval); job-change tracking for ~2,000 won-deal champions (creates HubSpot records and sales tasks); workflows for initiative tracking, mailbox/domain health, and turning closed deals into new leads and tasks.
   - Ran webinars with ~500 attendees (organised, did not present, they were in Dutch). Planned Bizzy's presence at multiple Belgian and international events (attended/exhibited, not organised by Bizzy).
   - Builds Clay enrichment waterfalls routinely, adapted per use case, including Prospeo and ZeroBounce via API plus Clay credits. Has NOT used Surfe or Hublead.
