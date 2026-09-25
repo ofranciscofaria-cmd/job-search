@@ -89,7 +89,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
    - Re-read the design after moving, verify the numbers, and check the thumbnail. The right column normally stays as is; only check that Skills (`LB2zrHmxSW4XDrqF`) does not overlap the Interests bar (top about 817.7).
 6. Commit: `edit-design` with `finalize: "commit"` and no operations. Edits are invisible until committed.
 7. Rename to "CV - Francisco Faria x <Company>", export PDF (A4), send him the Canva link and the PDF link. Mention any formatting glitch he must fix by hand (e.g. bold bleeding into a line).
-8. PDF file name: whenever the PDF is attached to Notion (CV PDF column), name the file exactly `CV - Francisco Faria x <Company>.pdf` (Company as in the row title, without / \ : * ? " < > |). A watcher on his laptop (`scripts/install-cv-watcher.ps1`) moves that download to `Job Search\CVs\<Company>\CV - Francisco Faria.pdf`, the name he sends.
+8. PDF file name: whenever the PDF is attached to Notion (CV PDF column), name the file exactly `CV - Francisco Faria x <Company>.pdf` (Company as in the row title, without / \ : * ? " < > |). A watcher on his laptop (`scripts/install-cv-watcher.ps1`) moves that download to `Job Search\CVs\<Company>\CV - Francisco Faria.pdf`, the name he sends. Cover letters named `Cover Letter - Francisco Faria x <Company>.pdf` go to the same folder as `Cover Letter - Francisco Faria.pdf`.
 
 ## Cover letter or message
 - **Always make a Canva cover letter for every role** (just in case), even when the form has no field for it or Application needs says "CV only". Only paste a letter or message into a form if it has a field for it.
