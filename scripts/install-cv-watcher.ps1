@@ -5,7 +5,9 @@ What it does from then on, in the background, every time Windows starts:
   a file downloaded as   "CV - Francisco Faria x <Company>.pdf"   (the name the builder gives the Notion CV PDF;
   "<Company> - CV - Francisco Faria.pdf" works too; Notion's underscores instead of spaces are handled)
   is moved from Downloads to   Job Search\CVs\<Company>\CV - Francisco Faria.pdf
-  If that folder already has a CV (a revised version), the older one goes to Job Search\CVs\<Company>\old\.
+  A cover letter downloaded as "Cover Letter - Francisco Faria x <Company>.pdf" goes to the same folder
+  as   Job Search\CVs\<Company>\Cover Letter - Francisco Faria.pdf
+  If that folder already has the file (a revised version), the older one goes to Job Search\CVs\<Company>\old\.
 
 How to install: copy this whole file, paste it into a PowerShell window, press Enter.
 How to remove: delete "CV watcher" from the Startup folder (Win+R, type shell:startup) and restart.
@@ -37,8 +39,9 @@ if (-not $downloads -or -not (Test-Path -LiteralPath $downloads)) { $downloads =
 
 $log = Join-Path $Root 'watcher.log'
 $patterns = @(
-    '^CV - Francisco Faria x (?<co>.+?)(?: ?\(\d+\))?\.pdf$',
-    '^(?<co>.+?) - CV - Francisco Faria(?: ?\(\d+\))?\.pdf$'
+    @('^CV - Francisco Faria x (?<co>.+?)(?: ?\(\d+\))?\.pdf$', 'CV - Francisco Faria'),
+    @('^(?<co>.+?) - CV - Francisco Faria(?: ?\(\d+\))?\.pdf$', 'CV - Francisco Faria'),
+    @('^Cover Letter - Francisco Faria x (?<co>.+?)(?: ?\(\d+\))?\.pdf$', 'Cover Letter - Francisco Faria')
 )
 $invalid = [IO.Path]::GetInvalidFileNameChars()
 
@@ -54,7 +57,8 @@ while ($true) {
         # Notion downloads use underscores for spaces: CV_-_Francisco_Faria_x_FitForMe.pdf
         $name = ($f.Name -replace '_', ' ') -replace ' {2,}', ' '
         $company = $null
-        foreach ($p in $patterns) { if ($name -match $p) { $company = $Matches['co'].Trim(); break } }
+        $base = $null
+        foreach ($p in $patterns) { if ($name -match $p[0]) { $company = $Matches['co'].Trim(); $base = $p[1]; break } }
         if (-not $company) { continue }
         foreach ($c in $invalid) { $company = $company.Replace([string]$c, '') }
         if (-not $company) { continue }
@@ -65,12 +69,12 @@ while ($true) {
         try {
             $dir = Join-Path $Root $company
             New-Item -ItemType Directory -Force -Path $dir | Out-Null
-            $dest = Join-Path $dir 'CV - Francisco Faria.pdf'
+            $dest = Join-Path $dir "$base.pdf"
             if (Test-Path -LiteralPath $dest) {
                 $oldDir = Join-Path $dir 'old'
                 New-Item -ItemType Directory -Force -Path $oldDir | Out-Null
                 $stamp = (Get-Item -LiteralPath $dest).LastWriteTime.ToString('yyyy-MM-dd HHmm')
-                Move-Item -LiteralPath $dest -Destination (Join-Path $oldDir "CV - Francisco Faria ($stamp).pdf") -Force
+                Move-Item -LiteralPath $dest -Destination (Join-Path $oldDir "$base ($stamp).pdf") -Force
             }
             Move-Item -LiteralPath $f.FullName -Destination $dest -Force
             Write-Log "$($f.Name) -> $dest"
