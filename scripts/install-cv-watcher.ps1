@@ -2,7 +2,8 @@
 One-time setup for the CV watcher (Windows PowerShell 5.1+, no admin, no Python).
 
 What it does from then on, in the background, every time Windows starts:
-  a file downloaded as   "<Company> - CV - Francisco Faria.pdf"   (the name the builder gives the Notion CV PDF)
+  a file downloaded as   "CV - Francisco Faria x <Company>.pdf"   (the name the builder gives the Notion CV PDF;
+  "<Company> - CV - Francisco Faria.pdf" works too)
   is moved from Downloads to   Job Search\CVs\<Company>\CV - Francisco Faria.pdf
   If that folder already has a CV (a revised version), the older one goes to Job Search\CVs\<Company>\old\.
 
@@ -35,7 +36,10 @@ try { $downloads = (New-Object -ComObject Shell.Application).NameSpace('shell:Do
 if (-not $downloads -or -not (Test-Path -LiteralPath $downloads)) { $downloads = Join-Path $env:USERPROFILE 'Downloads' }
 
 $log = Join-Path $Root 'watcher.log'
-$pattern = '^(?<co>.+?) - CV - Francisco Faria(?: ?\(\d+\))?\.pdf$'
+$patterns = @(
+    '^CV - Francisco Faria x (?<co>.+?)(?: ?\(\d+\))?\.pdf$',
+    '^(?<co>.+?) - CV - Francisco Faria(?: ?\(\d+\))?\.pdf$'
+)
 $invalid = [IO.Path]::GetInvalidFileNameChars()
 
 function Write-Log([string]$msg) {
@@ -45,10 +49,11 @@ function Write-Log([string]$msg) {
 Write-Log "Started. Watching $downloads"
 
 while ($true) {
-    $files = Get-ChildItem -LiteralPath $downloads -Filter '* - CV - Francisco Faria*.pdf' -File -ErrorAction SilentlyContinue
+    $files = Get-ChildItem -LiteralPath $downloads -Filter '*CV - Francisco Faria*.pdf' -File -ErrorAction SilentlyContinue
     foreach ($f in $files) {
-        if ($f.Name -notmatch $pattern) { continue }
-        $company = $Matches['co'].Trim()
+        $company = $null
+        foreach ($p in $patterns) { if ($f.Name -match $p) { $company = $Matches['co'].Trim(); break } }
+        if (-not $company) { continue }
         foreach ($c in $invalid) { $company = $company.Replace([string]$c, '') }
         if (-not $company) { continue }
 
@@ -93,4 +98,4 @@ Start-Process -FilePath $ps -ArgumentList $arguments -WindowStyle Hidden
 Write-Host ''
 Write-Host "CV watcher installed and running."
 Write-Host "CVs will be saved in: $cvRoot"
-Write-Host "Test: save any PDF in Downloads as 'Test - CV - Francisco Faria.pdf'; within a few seconds it moves to $cvRoot\Test\"
+Write-Host "Test: save any PDF in Downloads as 'CV - Francisco Faria x Test.pdf'; within a few seconds it moves to $cvRoot\Test\"
