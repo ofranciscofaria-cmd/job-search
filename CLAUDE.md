@@ -89,6 +89,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
    - Re-read the design after moving, verify the numbers, and check the thumbnail. The right column normally stays as is; only check that Skills (`LB2zrHmxSW4XDrqF`) does not overlap the Interests bar (top about 817.7).
 6. Commit: `edit-design` with `finalize: "commit"` and no operations. Edits are invisible until committed.
 7. Rename to "CV - Francisco Faria x <Company>", export PDF (A4), send him the Canva link and the PDF link. Mention any formatting glitch he must fix by hand (e.g. bold bleeding into a line).
+8. PDF file name: whenever the PDF is attached to Notion (CV PDF column), name the file exactly `<Company> - CV - Francisco Faria.pdf` (Company as in the row title, without / \ : * ? " < > |). A watcher on his laptop (`scripts/install-cv-watcher.ps1`) moves that download to `Job Search\CVs\<Company>\CV - Francisco Faria.pdf`, the name he sends.
 
 ## Cover letter or message
 - Only if the form has a field for it. Structure: (1) why this company and role, using motivations he has confirmed, ask if unknown, never fake passion; (2) proof from his real work with numbers; (3) address the biggest gap honestly in one sentence, only if it is a real gap; (4) short close. Match the posting's tone and language. No em dashes.
@@ -116,5 +117,5 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 - Page body: keep `## My input` exactly as he wrote it at the top, then `---`, then replace everything below with sections: "## CV: what changed and why" (3-6 bullets), "## Texts" (each requested text ready to paste), "## Please confirm" (any claim or gap needing his check; omit if none), "## Revision history" (keep previous entries), "## Role analysis" (keep what was there).
 - If he writes change requests inside My input instead of Revision notes, treat them as revision notes too, but still never edit My input.
 - Changes requested: apply Revision notes to the SAME Canva design (copy-free edit, re-flow again, commit, re-export) and/or rewrite texts; append "YYYY-MM-DD: <his notes> -> <what changed>" to Revision history; clear Revision notes.
-- Then set Status CV ready, CV (Canva) edit link, attach the PDF to CV PDF (Canva export URLs expire: upload via Notion attachment from the export URL), Last update. Notify via ntfy with the Notion row link.
+- Then set Status CV ready, CV (Canva) edit link, attach the PDF to CV PDF (Canva export URLs expire: upload via Notion attachment from the export URL, filename `<Company> - CV - Francisco Faria.pdf`, see Tailoring step 8), Last update. Notify via ntfy with the Notion row link.
 - If something blocks (Canva unavailable, posting unreadable, a claim he must confirm before a CV makes sense): leave Status unchanged, write the problem at the top of the page body under "## Blocked", and notify.
