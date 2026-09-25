@@ -23,7 +23,7 @@ More junior titles are fine if pay clears the floor.
 3. Netherlands (equal to Belgium; close to Ghent and better pay): Amsterdam, Rotterdam, Utrecht, Eindhoven, The Hague, Breda. Many Dutch scale-ups work in English; only rule out when Dutch is REQUIRED or the posting is written in Dutch.
 4. Dublin, Ireland
 5. Remote (Europe)
-6. Other visa-free EU/EEA hubs: Barcelona, Madrid, Berlin, Copenhagen, Stockholm
+6. Other visa-free EU/EEA hubs: Barcelona, Madrid, Berlin, Hamburg, Munich, Copenhagen, Stockholm (Germany relocation confirmed OK on 2026-09-25, when German is not required)
 - Netherlands scan (added 2026-09-25, applies on top of the routine's location list): search LinkedIn with the location "Amsterdam Area" (plain "Amsterdam" returns zero), plus Rotterdam, Utrecht, Eindhoven, The Hague, Breda and Netherlands. Amsterdam Area, Rotterdam, Utrecht and Netherlands get every keyword; the others at least 7. Keep Owlie's Netherlands roles unless written in Dutch or requiring Dutch. Dutch as "a plus" is not a rule-out. Report a per-country count so the Netherlands yield is visible.
 - Portuguese-speaking roles abroad are a strong lever: search "Portuguese speaking" / "Portuguese" in Dublin, Amsterdam Area, Rotterdam, Barcelona, Berlin.
 7. Warm EU countries with decent pay (his wish, 2026-09-25): Malaga, Valencia, Malta (English is an official language; big iGaming CRM and marketing ops market, flag iGaming in Watch out), Limassol and Nicosia (Cyprus), Athens. Same filters as the rest of the EU.
@@ -41,9 +41,17 @@ More junior titles are fine if pay clears the floor.
 - Requires 4+ years (or 5+).
 - Quota-carrying sales roles requiring prior quota track record (flag only if Portuguese-speaking and very well paid).
 - Deep Salesforce admin / Microsoft Dynamics expert roles.
+- Added 2026-09-25 (queue review): these must never reach the Notion queue.
+  - Requires fluent/native-level Spanish, native English, or any other language level he does not have (he is Spanish intermediate, English C2 non-native).
+  - Hands-on ownership of paid ads (Google/Meta/LinkedIn Ads) as a must-have.
+  - Stated pay below his floor, "trainee compensation", or temporary contracts under 6 months.
+  - Remote/contract roles open only to people already resident in a country he does not live in.
+  - Outside his lane: customer support/CX, account management, customer success, sales support/admin, content/copywriting, brand/events/social, ad operations, product marketing, partner/channel marketing, sales enablement/coaching, strategy consulting, vague generalist "operations" or graduate programmes.
+  - B2C lifecycle/CRM email marketing (apps, e-commerce, D2C; Braze, Klaviyo, Customer.io). B2B CRM/marketing ops on HubSpot stays in.
+  - Reporting/forecasting/QBR-heavy sales ops or BI analyst roles (the Kipling pattern). Building roles with some reporting stay in.
+  - Duplicates: same company and same role (or near-identical text) as an existing Notion row. Skip, do not add a second row.
 
 ## Downgrade to "Maybe" at best (never "Worth applying")
-- Customer support, customer experience, account management or customer success roles (sideways from his GTM/RevOps specialisation), even if Portuguese-speaking.
 - Stated pay below about EUR 32k/year (outside Portugal), or pre-seed startups with no pay information.
 - Roles tagged as internship, or with contradictory information (e.g. "based in Netherlands" and "fully remote"). Flag the contradiction explicitly.
 - Generic talent-pool postings (not a specific vacancy): rule out.
@@ -55,3 +63,9 @@ More junior titles are fine if pay clears the floor.
 
 ## Quality bar for the report
 - "Worth applying" should be genuinely strong: realistic on years, no language barrier, in his GTM/RevOps/automation lane, pay likely above floor. It is fine to report zero.
+
+## Fit labels (added 2026-09-25)
+- Strong: the day-to-day is his Bizzy work (building GTM systems, automations, AI agents on HubSpot/Clay/n8n-type stacks) and no real must-have gap.
+- Good: in his lane; gaps are only nice-to-haves or a small years stretch (asks 2-3 years).
+- Stretch: in his lane but one real must-have he lacks (3+ years firmly required, a named tool as hard requirement, seniority clearly above him).
+- Do not default to Stretch. If most new rows come out Stretch, the filters above are not being applied.

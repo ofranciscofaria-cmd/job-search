@@ -1,0 +1,586 @@
+{
+ "note": "Queue cleanup approved by Francisco on 2026-09-25. Apply each: set Status, My feedback (if given), Last update 2026-09-25. Mark job IDs in seen-jobs.txt as 'skipped by Francisco'. Delete this file when done.",
+ "rows": [
+  {
+   "page_id": "3dc9eb9ad2da816f9091d80b6137d16d",
+   "company": "[Ailin.health](http://Ailin.health)",
+   "job_id": "4467071093",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da8180bfcdc3890cc82ba6",
+   "company": "Revelyst - Adventure Sports Group Europe",
+   "job_id": "4465035429",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da819c90fbcc66b3ccbc89",
+   "company": "HR Path",
+   "job_id": "4465555621",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da819e9ed7db5884906fa0",
+   "company": "Marie-Stella-Maris",
+   "job_id": "4465099318",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da8107a116e24ce333505f",
+   "company": "Smarttech247",
+   "job_id": "4464204243",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da8107b878f0cb3103d93d",
+   "company": "Finastra",
+   "job_id": "4456317623",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81908d6ac12e162c780d",
+   "company": "Nestl\u00e9 Business Solutions (NBS)",
+   "job_id": "4466552661",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81918016faac434ec75c",
+   "company": "Luza Tecnologia",
+   "job_id": "4463433993",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da819a9c34c28ef272edd2",
+   "company": "Samlino Group",
+   "job_id": "4464678829",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81dc9a82eac605e97522",
+   "company": "[team.blue](http://team.blue)",
+   "job_id": "4465801307",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81e7bae5c83298f36943",
+   "company": "Tranzaura",
+   "job_id": "4467071600",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da810da446ee6f7a02892c",
+   "company": "Savage X Fenty",
+   "job_id": "4457150794",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da8113b91fc04f3c3962d6",
+   "company": "TikTok",
+   "job_id": "4466503188",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da813d87dbff6de8cb448b",
+   "company": "DataCamp",
+   "job_id": "4465517670",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81b08bd8dfcabb52256b",
+   "company": "HYROX",
+   "job_id": "4463988817",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81c5b07eca0e58e5af4f",
+   "company": "Roche",
+   "job_id": "4465068906",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da813ea924d238fb7993b5",
+   "company": "[ComparaJ\u00e1.pt](http://ComparaJ\u00e1.pt)",
+   "job_id": "4465063502",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81e98715e04c9236b42f",
+   "company": "[ComparaJ\u00e1.pt](http://ComparaJ\u00e1.pt)",
+   "job_id": "4465062503",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da817c82bbdd9ae400ae59",
+   "company": "Destinus",
+   "job_id": "4465805083",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dc9eb9ad2da817f91feef1fd926147f",
+   "company": "Kleinanzeigen",
+   "job_id": "4467217069",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da8191a999d5129ecd632f",
+   "company": "[ComparaJ\u00e1.pt](http://ComparaJ\u00e1.pt)",
+   "job_id": "4464624161",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da810da25ed5fa9c7369d1",
+   "company": "[team.blue](http://team.blue)",
+   "job_id": "4454537762",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da814394a1d91337c3798e",
+   "company": "BAT (British American Tobacco)",
+   "job_id": "4454970271",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da813286bbf11fc46d6c98",
+   "company": "Dojo",
+   "job_id": "4437758424",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da8148b35dcc71fd84af02",
+   "company": "Distilled ([Daft.ie](http://Daft.ie))",
+   "job_id": "4467499659",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da81b68260e5ba1ebe89e4",
+   "company": "[Exhibitly.ai](http://Exhibitly.ai)",
+   "job_id": "4465917069",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da81d9a2eef92e8357c7e0",
+   "company": "POLITICO Europe",
+   "job_id": "4444472684",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3dd9eb9ad2da81ee9397f61485088017",
+   "company": "Unilin",
+   "job_id": "4456025221",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3de9eb9ad2da81158260d25725b78160",
+   "company": "amfori - Trade with Purpose",
+   "job_id": "4465995161",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3de9eb9ad2da818aa3d6f426346c2e98",
+   "company": "Nestl\u00e9 Nespresso SA",
+   "job_id": "4467989328",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3de9eb9ad2da819ba16dcd13f3ad4657",
+   "company": "Cpl (for a fundraising client)",
+   "job_id": "4458748753",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3df9eb9ad2da81448e02da024a24620c",
+   "company": "Frekuent",
+   "job_id": "4468625870",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3df9eb9ad2da8146b9e2f2af8ae2a3ab",
+   "company": "Orqa FPV",
+   "job_id": "4466628270",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3df9eb9ad2da8165926ada44afbea3f8",
+   "company": "Entrust",
+   "job_id": "4459308719",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3df9eb9ad2da817f8794d06767489aa9",
+   "company": "McKinsey & Company",
+   "job_id": "4468670839",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3df9eb9ad2da8190bd3ae49f5f761113",
+   "company": "cormeo ([medicines.ie](http://medicines.ie))",
+   "job_id": "4468377230",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3df9eb9ad2da8198b3fcd505246514a9",
+   "company": "Motorola Solutions",
+   "job_id": "4459147429",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3df9eb9ad2da81c3b251e45aeeb092e5",
+   "company": "Digital Manufacturing Ireland",
+   "job_id": "4468607512",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3df9eb9ad2da81c6b1aafdf14fc02d16",
+   "company": "Totalum",
+   "job_id": "4467496117",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e09eb9ad2da81099452c99ba8795ec5",
+   "company": "AssetMetrix GmbH",
+   "job_id": "4466912114",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e09eb9ad2da81209866d406d5b4a78b",
+   "company": "aydi",
+   "job_id": "4469145533",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e09eb9ad2da81239cd7ec678267c4e3",
+   "company": "Delnext",
+   "job_id": "4466853459",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e09eb9ad2da81408593e06d82577291",
+   "company": "ARC Europe",
+   "job_id": "4468641773",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e09eb9ad2da819d954aea1b2b9a1baa",
+   "company": "Holmes Place Portugal",
+   "job_id": "4468232842",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e09eb9ad2da81a9a03ac587d5071186",
+   "company": "Natulim",
+   "job_id": "4466914528",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3e09eb9ad2da81e9aa4beea3abfe1c05",
+   "company": "Volvo Trucks",
+   "job_id": "4432290823",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e09eb9ad2da81fd926accb2f0b64c0e",
+   "company": "Savills",
+   "job_id": "4444410934",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da8105bba6fad8ff59ba7c",
+   "company": "Unilin (Mohawk Industries)",
+   "job_id": "4441179894",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da8126ab43f5e2e8b999e3",
+   "company": "Arcon Recruitment Ireland (client: retail business)",
+   "job_id": "4469204032",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da812ebf85c36e3b250936",
+   "company": "Backbase",
+   "job_id": "4458368768",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da813c83e4c9ad7324be53",
+   "company": "Fresha",
+   "job_id": "4449667842",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da8163a0abdd914669b3e2",
+   "company": "Rakuten TV",
+   "job_id": "4466842854",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da816e9a12eca77e0853e9",
+   "company": "Adform",
+   "job_id": "4458407947",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da818892bed22b713a3c09",
+   "company": "Bauer Media Audio - Portugal",
+   "job_id": "4467980262",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da818c8addc4027d64b278",
+   "company": "Fresha",
+   "job_id": "4449684028",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da8191a231caa58ca487f8",
+   "company": "Bending Spoons",
+   "job_id": "4467815555",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: duplicate of another row."
+  },
+  {
+   "page_id": "3e19eb9ad2da8196921ad7340948f6e0",
+   "company": "Gilligan Black Recruitment (client: packaging/manufacturing B2B)",
+   "job_id": "4469104917",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da8197b6e8ed1a06f84047",
+   "company": "Mastercard",
+   "job_id": "4456501289",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e19eb9ad2da81cd8815f03ccd918d79",
+   "company": "Alan",
+   "job_id": "4469180898",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e29eb9ad2da818584b4cd19060680b2",
+   "company": "Google",
+   "job_id": "4458977688",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e39eb9ad2da8138a5a0d676a53994c6",
+   "company": "Michael Page (client undisclosed)",
+   "job_id": "vdab:74567462",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: duplicate of another row."
+  },
+  {
+   "page_id": "3e39eb9ad2da817ba1fbda8e3837f277",
+   "company": "Metyis",
+   "job_id": "4460258049",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e39eb9ad2da819e994ee3dcfa2f6cd4",
+   "company": "Kemin Industries",
+   "job_id": "4469927263",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e39eb9ad2da81f1b95af52ca0b4062c",
+   "company": "Jurimesh",
+   "job_id": "4469585445",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e39eb9ad2da8103a5b0e4ea68965eb0",
+   "company": "Frederico Mendes & Associados",
+   "job_id": "4470457989",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e49eb9ad2da8140914cca53cfccf106",
+   "company": "MR MARVIS",
+   "job_id": "4468552827",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3e49eb9ad2da815e8a17e1d7a3453a47",
+   "company": "Rubio Monocoat",
+   "job_id": "4458724205",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e49eb9ad2da816db415d5d2d3c02e27",
+   "company": "Principle (recruiter, client unnamed enterprise software)",
+   "job_id": "4469867817",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e49eb9ad2da816eb350eb03f4adae20",
+   "company": "voize",
+   "job_id": "4470612598",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e49eb9ad2da8180821ee9558c3c57dc",
+   "company": "MM Coaching (Marriage Reset)",
+   "job_id": "4469804125",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e49eb9ad2da81bbae1cf41a1e5419fd",
+   "company": "RECRUITERS (agency, client unnamed SaaS)",
+   "job_id": "4468568076",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e49eb9ad2da81d9b80aefb98fb69476",
+   "company": "SumUp",
+   "job_id": "4449817441",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3e59eb9ad2da81d59434cf808c0f56b5",
+   "company": "AUTODOC",
+   "job_id": "4469455665",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e59eb9ad2da81828354e03859ad4acc",
+   "company": "Allianz Benelux",
+   "job_id": "4469428279",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: outside my lane (not GTM systems building)."
+  },
+  {
+   "page_id": "3e59eb9ad2da819f82dfce3c3c6cafe2",
+   "company": "Jolly Technologies",
+   "job_id": "4470929360",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e59eb9ad2da81d0bd62f102a3af4df7",
+   "company": "GRAM",
+   "job_id": "4469627492",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e69eb9ad2da8132b1fec1f57c4b6d2c",
+   "company": "OneFootball",
+   "job_id": "4471662890",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3e69eb9ad2da8179b5e8d27d5dfb40e8",
+   "company": "Travel Department",
+   "job_id": "4471433330",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3e69eb9ad2da818cbbe5ebf860f930c0",
+   "company": "voize",
+   "job_id": "4462454023",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e69eb9ad2da81929750f1d09bd61e74",
+   "company": "NavVis",
+   "job_id": "4471426800",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: reporting/forecasting-heavy sales ops."
+  },
+  {
+   "page_id": "3e69eb9ad2da81c2b4f1e6cd02f5baa8",
+   "company": "Feelgo Portugal",
+   "job_id": "4471416642",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: hard blocker (language, paid ads must-have, pay below floor, temp contract or location lock)."
+  },
+  {
+   "page_id": "3e69eb9ad2da81d69bafd874bd1a0ee8",
+   "company": "Air Apps",
+   "job_id": "4469716955",
+   "status": "Not relevant",
+   "my_feedback": "Queue review 25/9: B2C lifecycle/email marketing, not my lane."
+  },
+  {
+   "page_id": "3dc9eb9ad2da81e79ed0eafbb57b34d4",
+   "company": "PRC Recruitment",
+   "job_id": "4467071631",
+   "status": "Closed",
+   "watch_out_append": "closed on 2026-09-25"
+  }
+ ]
+}
