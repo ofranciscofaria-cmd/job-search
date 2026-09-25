@@ -1233,7 +1233,7 @@
 4465730697 MG Motor Europe Marketing Specialist - ruled out: Requires trilingual fluency in Dutch, French and English ("essential") - hard language filter. (source: scan)
 4463975656 Air Apps Digital Marketing Manager - ruled out: Around 4+ years digital/performance marketing required (hard filter); paid-media specialist role (Google/Meta/LinkedIn Ads) he has never owned. (source: scan)
 4465765287 Medis Medical Imaging Marketing Manager, Interventional Cardiology - ruled out: Requires deep interventional-cardiology/medical-device domain expertise and international sales-enablement experience; lane and domain mismatch entirely. (source: scan)
-4463857338 Coverflex Marketing & GTM Ops Specialist - worth applying: Strong lane match: a GTM/growth-ops systems-builder role using Clay, Lemlist, HubSpot, n8n and AI workflows, closely mirroring his Bizzy allbound engine. (source: scan)
+4463857338 Coverflex Marketing & GTM Ops Specialist - applied
 4465776870 VAO Sistemas SL Customer Operations - ruled out: Posting entirely in Spanish with no stated English working language; customer/account-support coordination role, sideways from his GTM/RevOps lane. (source: scan)
 4465808883 Sanofi Lab Automation Engineer Specialist - ruled out: Requires hands-on Python/R programming (hard filter) and a lab-science/engineering background; unrelated lane (lab robotics automation, not GTM). (source: scan)
 4418838444 Revolut Graduate Programme 2027: Strategy & Operations Manager - ruled out: Requires hands-on SQL/Python/R (hard filter) and a STEM degree; programme starts 2027 and already has 200+ applicants. (source: scan)
