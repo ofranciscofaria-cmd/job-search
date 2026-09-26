@@ -107,13 +107,13 @@ He is a gamer and would love to work in gaming (dream names: 2K, Mojang/Minecraf
 - In Notion, start Why it fits with "Gaming:" so these rows are easy to spot.
 
 ## Sports (added 2026-09-26)
-He loves football (considered a sports marketing career). Same approach as Gaming: a bonus lane on top of the normal search, football first, other sports welcome.
+He loves football (considered a sports marketing career). Same approach as Gaming: a bonus lane on top of the normal search. Only football and F1 (motorsport). No cycling, no padel; other sports only if the company is mainly football or F1.
 - Where to look:
   - Sports-tech B2B (best fit for his GTM/RevOps work): MyGamePlan, Hudl, Catapult, Stats Perform, Sportradar, Genius Sports, SciSports, Teamworks, Kitman Labs, Wyscout, ticketing and fan-engagement SaaS.
   - Clubs, leagues and federations in Europe: Benfica, FC Porto, Sporting, big European clubs, UEFA, LaLiga, Premier League (visa, see London note), City Football Group, F1 teams.
   - Sports brands' European HQs: Nike (Hilversum), Adidas and Puma (Herzogenaurach), Decathlon (English-working roles only).
   - Roles: marketing ops, CRM/fan lifecycle, business/strategy ops, GTM/RevOps at sports-tech, partnerships ops, growth, junior digital marketing.
-  - Extra keywords: "sports", "football", "sports tech", "fan engagement" combined with his usual titles.
+  - Extra keywords: "football", "F1", "Formula 1", "motorsport", "sports tech", "fan engagement" combined with his usual titles.
 - Exceptions: the same as Gaming (fan CRM/lifecycle allowed; junior paid ads allowed if everything else fits, flagged as the gap; lower pay OK, flagged). All other hard filters still apply. Portuguese club roles are welcome (Portuguese native).
 - Locations: Europe and remote-EMEA only.
 - In Notion, start Why it fits with "Sports:".
