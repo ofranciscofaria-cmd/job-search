@@ -90,3 +90,18 @@ Most rows came out Stretch because the scan finds generic big-company roles aski
 - B2B SaaS and AI start-ups/scale-ups (seed to Series C) hiring their first RevOps, marketing ops or GTM engineer.
 - Extra keywords: "HubSpot consultant", "HubSpot specialist", "HubSpot administrator", "RevOps specialist", "marketing operations specialist", "GTM engineer", "Clay", "outbound automation", "CRM automation", "AI operations", "automation specialist", "growth operations associate", and the same with "junior" or "associate".
 - Extra boards to check (best effort): RevOps Careers (revopscareers.com, HubSpot and RevOps roles) and the Clay community job board (community.clay.com, full-time jobs). Treat postings there like any other: read the full text, verify the company.
+
+## Gaming (added 2026-09-26)
+He is a gamer and would love to work in gaming (dream names: 2K, Mojang/Minecraft, Valve). Treat gaming as a bonus lane, not a replacement: keep the normal search, and add gaming searches on top.
+- Where to look:
+  - B2B game-tech companies that sell to studios (best fit for his GTM/RevOps work): Unity, Xsolla, Overwolf, GameAnalytics, mod.io, Heroic Labs, Discord, esports and game-tech SaaS start-ups.
+  - Studios and publishers in Europe: Mojang, King, Embark, Paradox (Stockholm), Supercell, Remedy, Rovio (Helsinki), Ubisoft (Paris, English-working roles only), EA (FC football games), 2K/Take-Two European offices, Miniclip, CD Projekt, IO Interactive, Wargaming, Riot/Epic/Activision European offices, Lisbon and Barcelona studios.
+  - Roles: marketing ops, CRM/lifecycle, business/strategy ops, GTM/RevOps at game-tech, partnerships ops, growth, junior user acquisition.
+  - Extra keywords: "gaming" or "games" combined with his usual titles, plus "player CRM", "lifecycle marketing games", "junior user acquisition", "game marketing operations".
+- Exceptions to the hard filters, for gaming companies only:
+  - B2C lifecycle/CRM (player emails, Braze etc.) is allowed.
+  - Paid ads / user acquisition is allowed for junior roles only, and only if everything else fits. His experience is light (Google Ads keyword research at Blisq, oversaw paid ads at Bizzy without owning them, Google Ads Search certification): always flag it as the gap.
+  - Pay: he accepts lower pay for a cool gaming role. Do not rule out on pay alone; flag the pay estimate in Watch out.
+  - All other hard filters still apply (languages, coding, years, out-of-lane list).
+- Locations: Europe and remote-EMEA only. Leave out US/Canada studios (Valve, 2K Novato, Montreal etc.): visa.
+- In Notion, start Why it fits with "Gaming:" so these rows are easy to spot.
