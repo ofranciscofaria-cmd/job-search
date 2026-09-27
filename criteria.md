@@ -48,6 +48,11 @@ Note for the daily run (Francisco, 2026-09-25): search and keep ALL locations in
 - No visa sponsorship needed only within EU/EEA and Switzerland (Portuguese citizen). UK and other non-EU countries not covered by points 8-10 need a visa: skip unless the role explicitly sponsors.
 
 ## Hard filters (rule out)
+- Pipeline integrity (added 2026-09-27 after an audit found roles silently dropped):
+  - Portuguese is his NATIVE language. A posting written in Portuguese (Portugal or Brazil) is never a language rule-out. Language detection must tell Portuguese from Spanish; words like "Especialista", "Analista", "Gestor", "Comercial" exist in both, so never use them as a language signal.
+  - Only ONE title filter, at scan stage, using the rules in this file. No second title/lane pass on unread postings. Every posting that survives the title filter is fetched and read.
+  - If there is no time to read everything, rank by the location priority above and carry the rest to the next run: do NOT write unread IDs to seen-jobs.txt. Only IDs that were title-filtered once or actually read go there.
+  - Report the funnel honestly: title-filtered, fetched, read, carried over. Never collapse "not read" into "ruled out".
 - Requires French, Dutch, German, Italian or any language he lacks.
 - Posting written entirely in a language he does not speak (Italian, German, French, Dutch, Swedish...) unless the posting clearly says English is the working language. Treat such roles as ruled out, not as "language risk".
 - Requires hands-on coding (Python, JavaScript, software engineering) or strong SQL proficiency.
