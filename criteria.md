@@ -17,10 +17,10 @@ revenue operations, sales operations, marketing operations, GTM engineer, GTM op
 More junior titles are fine if pay clears the floor.
 
 ## Locations (priority order)
-1. Porto, Portugal
-2. Lisbon, Portugal
-3. Belgium: Ghent, Brussels, Antwerp (he lives in Ghent; fine as long as French/Dutch is not REQUIRED)
-3. Netherlands (equal to Belgium; close to Ghent and better pay): Amsterdam, Rotterdam, Utrecht, Eindhoven, The Hague, Breda. Many Dutch scale-ups work in English; only rule out when Dutch is REQUIRED or the posting is written in Dutch.
+1. Porto and the North of Portugal: Porto metro (Matosinhos, Maia, Vila Nova de Gaia), Braga, Guimaraes, Aveiro, Viana do Castelo, Famalicao (updated 2026-09-27: top priority, not just Porto city)
+2. Belgium, any city: Ghent, Brussels, Antwerp, Leuven, Mechelen, Kortrijk, Bruges, Hasselt, Liege etc. (he lives in Ghent; fine as long as French/Dutch is not REQUIRED; watch the Bizzy discretion rule)
+3. Lisbon, Portugal
+3b. Netherlands (below Belgium since 2026-09-27; close to Ghent and better pay): Amsterdam, Rotterdam, Utrecht, Eindhoven, The Hague, Breda. Many Dutch scale-ups work in English; only rule out when Dutch is REQUIRED or the posting is written in Dutch.
 4. Dublin, Ireland
 5. Remote (Europe)
 6. Other visa-free EU/EEA hubs: Barcelona, Madrid, Berlin, Hamburg, Munich, Copenhagen, Stockholm (Germany relocation confirmed OK on 2026-09-25, when German is not required)
