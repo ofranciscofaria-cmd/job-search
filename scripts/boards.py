@@ -8,6 +8,14 @@ Search (prints: key | title | company | location | date | url):
   python3 scripts/boards.py search remoteok "marketing operations" revops
   python3 scripts/boards.py search wwr
   python3 scripts/boards.py search landing
+  python3 scripts/boards.py search itjobs crm marketing "revenue operations"      (Portugal)
+  python3 scripts/boards.py search netempregos marketing crm                       (Portugal)
+  python3 scripts/boards.py search vagas crm revops "marketing ops"               (Brazil, max ~10 terms)
+  python3 scripts/boards.py search gupy crm revops growth                         (Brazil)
+  python3 scripts/boards.py search hellojobs                                      (Macau, browses marketing/IT/casino-marketing areas)
+
+Any job URL works in detail, including company ATS pages found by web search
+(job-boards.greenhouse.io, jobs.lever.co, jobs.ashbyhq.com): use key "ats:<company>-<id>" with the URL.
 
 Fetch full text of postings (one .txt per key in --out; NOTEXT if client-rendered):
   python3 scripts/boards.py detail "owlie:growth-marketeer-b2b|https://www.owliejobs.com/job-postings/growth-marketeer-b2b" --out /tmp/jobs
@@ -32,7 +40,9 @@ def get(url):
                                                "Accept": "text/html,application/json;q=0.9,*/*;q=0.8"})
     try:
         with urllib.request.urlopen(req, timeout=40) as r:
-            return r.read().decode("utf-8", "replace")
+            raw = r.read()
+            enc = "latin-1" if "net-empregos" in url else "utf-8"
+            return raw.decode(enc, "replace")
     except urllib.error.HTTPError as e:
         log(f"HTTP {e.code} {url}")
     except Exception as e:
@@ -198,6 +208,90 @@ def s_landing(terms):
             break
 
 
+# ---- added 2026-09-27: Portugal, Brazil, Macau boards ----
+def s_itjobs(terms):
+    """ITJobs.pt (Portugal, tech and digital roles)."""
+    for t in terms:
+        page = get(f"https://www.itjobs.pt/emprego?q={urllib.parse.quote(t)}")
+        if not page:
+            continue
+        for blk in re.split(r'<div class="list-title">', page)[1:]:
+            m = re.search(r'href="/oferta/(\d+)/([^"]+)"[^>]*>(.*?)</a>', blk, re.S)
+            if not m:
+                continue
+            comp = re.search(r'class="list-name"><a[^>]*>(.*?)</a>', blk, re.S)
+            loc = re.search(r'fa-map-marker"></i>(.*?)&nbsp;&nbsp;', blk, re.S)
+            emit(f"itjobs:{m.group(1)}", m.group(3), comp.group(1) if comp else "", loc.group(1) if loc else "", "",
+                 f"https://www.itjobs.pt/oferta/{m.group(1)}/{m.group(2)}")
+
+
+def s_netempregos(terms):
+    """Net-Empregos (Portugal, general board; pages are latin-1)."""
+    for t in terms:
+        page = get(f"https://www.net-empregos.com/pesquisa-empregos.asp?chaves={urllib.parse.quote(t.encode('latin-1', 'ignore'))}")
+        if not page:
+            continue
+        for blk in re.split(r'<h2 style="font-size:20px', page)[1:]:
+            m = re.search(r'href=/?(\d+)/([^/> ]+)/?>(.*?)</a>', blk, re.S)
+            if not m:
+                continue
+            date = re.search(r'flaticon-calendar[^>]*></i>\s*([^<]+)<', blk)
+            loc = re.search(r'flaticon-pin[^>]*></i>\s*([^<]+)<', blk)
+            comp = re.search(r'flaticon-work[^>]*></i>\s*([^<]+)<', blk)
+            emit(f"netempregos:{m.group(1)}", m.group(3), comp.group(1) if comp else "", loc.group(1) if loc else "",
+                 date.group(1) if date else "", f"https://www.net-empregos.com/{m.group(1)}/{m.group(2)}/")
+
+
+def s_vagas(terms):
+    """Vagas.com.br (Brazil). Rate-limited by Cloudflare: keep it to about 10 terms per run."""
+    for t in terms:
+        slug = re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")
+        page = get(f"https://www.vagas.com.br/vagas-de-{slug}")
+        if not page:
+            continue
+        for blk in re.split(r'<a class="link-detalhes-vaga"', page)[1:]:
+            m = re.search(r'data-id-vaga="(\d+)" title="([^"]*)".*?href="(/vagas/v\d+/[^"]+)"', blk, re.S)
+            if not m:
+                continue
+            comp = re.search(r'class="emprVaga">\s*(.*?)\s*</span>', blk, re.S)
+            loc = re.search(r'class="vaga-local">\s*<i[^>]*></i>\s*([^<]+)', blk, re.S)
+            date = re.search(r'class="data-publicacao">(?:<i[^>]*></i>)?([^<]+)<', blk)
+            emit(f"vagas:{m.group(1)}", m.group(2), comp.group(1) if comp else "", loc.group(1) if loc else "",
+                 date.group(1) if date else "", "https://www.vagas.com.br" + m.group(3))
+
+
+def s_gupy(terms):
+    """Gupy portal (Brazil, most large Brazilian employers). Full description is in the search JSON."""
+    for t in terms:
+        page = get(f"https://portal.gupy.io/job-search/term={urllib.parse.quote(t)}")
+        if not page:
+            continue
+        m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', page, re.S)
+        if not m:
+            log("gupy: no json"); continue
+        try:
+            jobs = json.loads(m.group(1))["props"]["pageProps"]["initialJobList"]["data"]
+        except Exception as e:
+            log(f"gupy json {e}"); continue
+        for j in jobs:
+            loc = ", ".join(x for x in (j.get("city"), j.get("state")) if x) + f" ({j.get('workplaceType', '')})"
+            emit(f"gupy:{j['id']}", j.get("name", ""), j.get("careerPageName", ""), loc, (j.get("publishedDate") or "")[:10], j.get("jobUrl", ""))
+
+
+HJ_AREAS = {"F19": "Marketing and PR", "F29": "IT and Telecom", "F30": "Media and Advertising", "F39": "Casino marketing",
+            "F44": "Casino VIP marketing", "F51": "Hotel sales and marketing"}
+
+
+def s_hellojobs(terms):
+    """hello-jobs.com (Macau). Browses the marketing, IT and casino-marketing areas (about 15 newest each); terms are ignored."""
+    for code, name in HJ_AREAS.items():
+        page = get(f"https://jobsearch.hello-jobs.com/Job-Search/{code[1:]}-Functional-Area-Jobs-in-Macau/{code}.aspx?Lang=ENU")
+        if not page:
+            continue
+        for rel, jid in sorted(set(re.findall(r'href="\.\./([^"]+-Job-Description/[^"]+/(\d+)\.aspx)"', page))):
+            title = urllib.parse.unquote(rel.split("/")[-2]).replace("-", " ")
+            emit(f"hellojobs:{jid}", title, "", f"Macau ({name})", "", f"https://jobsearch.hello-jobs.com/Job-Search/{rel}")
+
 # ---------- detail ----------
 def detail(items, out):
     os.makedirs(out, exist_ok=True)
@@ -212,10 +306,19 @@ def detail(items, out):
         if board == "vdab" or not url:
             open(fn, "w").write(f"### {key}\n{url}\nNOTEXT\n")
             print(f"{key} NOTEXT (client-rendered)"); continue
-        page = get(url)
+        am = re.match(r"https://jobs\.ashbyhq\.com/([^/]+)/([0-9a-f-]{36})", url)
+        if am:  # Ashby pages are client-rendered: use the public posting API
+            api = get(f"https://api.ashbyhq.com/posting-api/job-board/{am.group(1)}")
+            try:
+                job = next(j for j in json.loads(api or "{}").get("jobs", []) if j.get("id") == am.group(2))
+                page = f"<h1>{html.escape(job.get('title', ''))}</h1><p>{html.escape(job.get('location', ''))}</p>" + (job.get("descriptionHtml") or "")
+            except (StopIteration, ValueError):
+                page = None
+        else:
+            page = get(url)
         if not page:
             open(fn, "w").write(f"### {key}\n{url}\nNOTEXT\n")
-            print(f"{key} NOTEXT (fetch failed)"); continue
+            print(f"{key} NOTEXT (fetch failed or posting closed)"); continue
         body = page
         if board == "owlie":
             m = re.search(r'(?is)<main.*?</main>', page)
@@ -234,7 +337,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("search")
-    s.add_argument("board", choices=["vdab", "owlie", "stepstone", "remoteok", "wwr", "landing"])
+    s.add_argument("board", choices=["vdab", "owlie", "stepstone", "remoteok", "wwr", "landing", "itjobs", "netempregos", "vagas", "gupy", "hellojobs"])
     s.add_argument("terms", nargs="*")
     d = sub.add_parser("detail")
     d.add_argument("items", nargs="+")

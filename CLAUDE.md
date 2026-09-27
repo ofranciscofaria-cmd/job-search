@@ -35,6 +35,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 - `applications.md`: ARCHIVE up to 2026-09-13. Do not update; Notion replaced it.
 - `seen-jobs.txt`: LinkedIn job IDs already reviewed.
 - `reports/daily-YYYY-MM-DD.md`: output of the daily routine (inbox, alerts, LinkedIn scan). Roles are numbered in section 3 "Worth applying"; "role 2" means the second one there.
+- `scripts/boards.py`: other job boards (Belgium/NL/remote, Portugal: itjobs + netempregos, Brazil: gupy + vagas, Macau: hellojobs) and any company ATS page (Greenhouse, Lever, Ashby), search and full-text `detail`. Which sources the daily run must use: `criteria.md` "Sources to search after LinkedIn".
 - `li.py`: LinkedIn public job reader. `python3 li.py detail <ID> --out /tmp/jobs` saves the full posting. Always read the full posting before tailoring.
 - `config/`: notification settings. Never print or change its contents.
 

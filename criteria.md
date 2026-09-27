@@ -129,3 +129,14 @@ He loves football (considered a sports marketing career). Same approach as Gamin
 - Exceptions: the same as Gaming (fan CRM/lifecycle allowed; junior paid ads allowed if everything else fits, flagged as the gap; lower pay OK, flagged). All other hard filters still apply. Portuguese club roles are welcome (Portuguese native).
 - Locations: Europe and remote-EMEA only.
 - In Notion, start Why it fits with "Sports:".
+
+## Sources to search after LinkedIn (added 2026-09-27; this section wins over the routine prompt's board list)
+Every source below returns the FULL posting text, so screen these exactly like LinkedIn roles (title filter once, then read in full, then Strong/Good/Stretch or rule out). Never judge a role from its title or a snippet alone.
+1. Boards via scripts/boards.py (search, then `detail` for every title-filter survivor):
+   - Belgium/NL/remote (as before): vdab, owlie, stepstone, remoteok, wwr, landing.
+   - Portugal: `itjobs` (terms: crm, hubspot, marketing, "marketing automation", "revenue operations", growth, automation, "sales operations") and `netempregos` (terms: marketing, crm, "marketing digital", comercial, automação, growth).
+   - Brazil: `gupy` (terms: crm, revops, "revenue operations", "marketing ops", growth, hubspot, "go to market", automação, "inteligência artificial") and `vagas` (max about 10 terms per run, it rate-limits: crm, revops, "operações de marketing", growth, hubspot, "automação de marketing").
+   - Macau: `hellojobs` (no terms; browses marketing, IT and casino-marketing areas). Titles are often in Chinese: read the detail anyway if the English part or the area looks in-lane.
+2. Indeed connector: `search_jobs` with the core keywords for country codes PT, BE, NL, IE, BR, FR, ES, DE (location = the priority cities or "remote"). Indeed search results have NO description: for every title that survives the title filter, call `get_job_details` with its Job Id and screen the full text. Seen key: `indeed:<company>-<title>` slug (Indeed ids change per search). Skip roles already found on LinkedIn (same company and title).
+3. Company ATS pages via web search (catches startups that never post on LinkedIn): WebSearch queries like `site:job-boards.greenhouse.io "revenue operations" (Portugal OR Lisbon OR Porto)`, `site:jobs.lever.co "marketing operations" Europe`, `site:jobs.ashbyhq.com "GTM engineer" remote Europe`, `site:jobs.ashbyhq.com hubspot Brazil`. Run at least 12 such queries across the three domains, core keywords and priority locations. Fetch each promising hit with `python3 scripts/boards.py detail "ats:<company>-<id>|<url>"` (Ashby pages are handled through its API).
+4. Report: a per-source line (found / title-filtered / read in full / added) so Francisco can see what each source adds.
