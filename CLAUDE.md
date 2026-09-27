@@ -51,6 +51,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
   - Built the "allbound" engine: HubSpot buyer intent + LinkedIn ad engagement (Fibbler) into HubSpot, qualified, researched in Clay, personalised email and LinkedIn sequences in Lemlist, sales gets call and reply tasks. n8n fills gaps. **1.5M+ EUR pipeline** (older CVs and texts said 500k or 1M: always use 1.5M+), outreach campaigns average **20%+ reply rate** (say "outreach campaigns", not "Lemlist campaigns").
   - AI agents in production with Claude and MCP: reply bot (tags every Lemlist reply, logs to Notion, auto-sends simple replies, holds revenue-sensitive ones for approval); job-change tracking for ~2,000 won-deal champions (creates HubSpot records and sales tasks); workflows for initiative tracking, mailbox/domain health, and turning closed deals into new leads and tasks.
   - Ran webinars with ~500 attendees (organised, did not present, they were in Dutch). Planned Bizzy's presence at multiple Belgian and international events (attended/exhibited, not organised by Bizzy).
+  - Uses Customer.io at Bizzy (emails and popups): knows the platform, so never list Customer.io as a gap. Do not describe what he built in it beyond that.
   - Builds Clay enrichment waterfalls routinely, adapted per use case, including Prospeo and ZeroBounce via API plus Clay credits. Has NOT used Surfe or Hublead.
   - Owns the Bizzy website (no-code): forms, form changes, lead routing (who gets which form) into HubSpot. Website to CRM to demo is NOT a gap.
   - Recently started producing SEO website articles end to end with Claude (topic need, image generation, writing, publishing). Early stage: describe lightly ("started producing content with AI end to end"), never overstate.
@@ -61,7 +62,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 - Education: Master's Marketing & Digital Transformation, Vlerick Ghent (2024-2025); Bachelor's Marketing Management, IPAM Porto (2021-2024); Erasmus, Romanian-American University Bucharest (Sep 2022 to Feb 2023). Lidl strategy project silver medal; Sales & Negotiation coursework.
 - Certifications: Google Ads Search (Sep 2026), Google Analytics.
 - Languages: Portuguese native, English C2, Spanish intermediate, Dutch beginner. No French, Italian, German.
-- Does not code. No SQL yet. No-code/low-code: n8n, Zapier, Clay, HubSpot, Lemlist, Notion, Claude/MCP, Lovable, Framer.
+- Does not code. No SQL yet. No-code/low-code: n8n, Zapier, Clay, HubSpot, Customer.io, Lemlist, Notion, Claude/MCP, Lovable, Framer.
 - Contact: ofranciscofaria@gmail.com, Belgian +32 483 10 23 49, Portuguese +351 964 506 318, linkedin.com/in/fariafrancisco. Lives in Ghent, Belgium.
 - Open to relocating (Berlin, Dublin, Porto, Lisbon, etc.) when the role is worth it; notice period unknown.
 - Loves football (considered a sports marketing career). Interests line can start with Football when relevant.

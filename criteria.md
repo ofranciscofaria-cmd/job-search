@@ -9,6 +9,7 @@ Last updated: 2026-09-25 (Netherlands moved up to priority 3; warm countries and
 - Relevant experience: about 1.5 to 2 years. Treat roles asking 4+ years as too senior, 3 years as a stretch, 2+ years as fine.
 - Certifications: Google Ads Search, Google Analytics.
 - Languages: Portuguese (native), English (C2), Spanish (intermediate), Dutch (beginner). No French, Italian, German.
+- Tools he knows: HubSpot, Clay, n8n, Zapier, Lemlist, Customer.io (used at Bizzy for emails and popups; never a gap), Notion, Claude/MCP.
 - Does NOT code (no Python/JavaScript). No-code/low-code only. SQL is not known yet.
 - Lives in Ghent, Belgium (no relocation needed for Belgian roles).
 
@@ -71,7 +72,7 @@ Note for the daily run (Francisco, 2026-09-25): search and keep ALL locations in
   - Remote/contract roles open only to people already resident in a country he does not live in.
     Clarified 2026-09-27 (Francisco): this is a HARD NO everywhere, including Brazil and EU countries. He moves for a job, never before getting one. "Remote, only for people already living in Brazil/NL/etc." = rule out, never a Maybe. On-site or hybrid roles that accept relocation (or say nothing about current residence) stay in.
   - Outside his lane: customer support/CX, account management, customer success, sales support/admin, content/copywriting, brand/events/social, ad operations, product marketing, partner/channel marketing, sales enablement/coaching, strategy consulting, vague generalist "operations" or graduate programmes.
-  - B2C lifecycle/CRM email marketing (apps, e-commerce, D2C; Braze, Klaviyo, Customer.io). B2B CRM/marketing ops on HubSpot stays in.
+  - B2C lifecycle/CRM email marketing (apps, e-commerce, D2C; Braze, Klaviyo, Customer.io). B2B CRM/marketing ops on HubSpot stays in. (This rule is about the B2C lane, not the tool: he knows Customer.io, so a B2B role using it is not a gap.)
   - Reporting/forecasting/QBR-heavy sales ops or BI analyst roles (the Kipling pattern). Building roles with some reporting stay in.
   - Duplicates: same company and same role (or near-identical text) as an existing Notion row. Skip, do not add a second row.
 
