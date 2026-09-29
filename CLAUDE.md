@@ -11,8 +11,9 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 - Read rows with the Notion query tool in **view mode** (unlimited on the free plan; do NOT use SQL mode):
   - Builder queue (Status Approved or Changes requested): `https://www.notion.so/fd4f185d76f7430ead65f7dd7b9bdb18?v=3da9eb9ad2da81baa517000c4e7c92a7`
   - All roles (dedupe by Job ID, read My take / My feedback): `https://www.notion.so/fd4f185d76f7430ead65f7dd7b9bdb18?v=3da9eb9ad2da81f6a26f000c3ea0b5b3`
-- Status values: New, Approved, Changes requested, CV ready, Applied, Interview, Assessment, Offer, Rejected, Not relevant, On hold, Closed.
-  - Routines set: New (morning scan), CV ready (builder), Interview/Assessment/Offer/Rejected (from emails), Closed (posting closed).
+- Status values: New, Approved, Changes requested, CV ready, Applied, In contact, Assessment, Interview, Offer, Rejected, Not relevant, On hold, Closed.
+  - In contact (added 2026-09-29): the employer replied personally but it is not yet an interview or a test, e.g. screening questions by email, a salary expectation question, availability or relocation questions, a request for more documents. Set it from emails, fill Next action with what he must answer, and draft the answer in the row body under "## Reply draft" (below the ---). Interview = a call or meeting is scheduled or requested; Assessment = a test, case or task.
+  - Routines set: New (morning scan), CV ready (builder), In contact/Interview/Assessment/Offer/Rejected (from emails), Closed (posting closed).
   - Francisco sets: Approved, Not relevant, On hold, Changes requested, Applied. Never overwrite his fields: My take, My feedback, Application needs, Quick note, Revision notes.
 - Dates use `date:<Property>:start` (YYYY-MM-DD). Always set `Last update` when changing a row.
 - Page URL for a row: `https://www.notion.so/<page id without dashes>`.
