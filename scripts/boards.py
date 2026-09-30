@@ -13,6 +13,8 @@ Search (prints: key | title | company | location | date | url):
   python3 scripts/boards.py search vagas crm revops "marketing ops"               (Brazil, max ~10 terms)
   python3 scripts/boards.py search gupy crm revops growth                         (Brazil)
   python3 scripts/boards.py search hellojobs                                      (Macau, browses marketing/IT/casino-marketing areas)
+  python3 scripts/boards.py search freelancermap hubspot clay revops              (freelance projects, DACH/remote)
+  python3 scripts/boards.py search 99freelas hubspot crm automação                (freelance projects, Brazil)
 
 Any job URL works in detail, including company ATS pages found by web search
 (job-boards.greenhouse.io, jobs.lever.co, jobs.ashbyhq.com): use key "ats:<company>-<id>" with the URL.
@@ -292,6 +294,39 @@ def s_hellojobs(terms):
             title = urllib.parse.unquote(rel.split("/")[-2]).replace("-", " ")
             emit(f"hellojobs:{jid}", title, "", f"Macau ({name})", "", f"https://jobsearch.hello-jobs.com/Job-Search/{rel}")
 
+
+# ---- added 2026-09-30: freelance and part-time boards ----
+def s_freelancermap(terms):
+    """freelancermap (DACH freelance projects, many in English and remote). Description is in the search JSON."""
+    for t in terms:
+        page = get(f"https://www.freelancermap.de/projekte?query={urllib.parse.quote(t)}")
+        if not page:
+            continue
+        m = re.search(r'data-component-name="ProjectSearch"[^>]*>(.*?)</script>', page, re.S)
+        if not m:
+            log("freelancermap: no json"); continue
+        try:
+            projects = json.loads(m.group(1)).get("initialResults") or []
+        except Exception as e:
+            log(f"freelancermap json {e}"); continue
+        for pr in projects:
+            loc = pr.get("city") or ", ".join(str(x.get("name", x)) if isinstance(x, dict) else str(x) for x in (pr.get("locations") or []))
+            extra = " / ".join(x for x in (pr.get("durationText"), pr.get("beginningText"), str(pr.get("budget") or "")) if x)
+            emit(f"freelancermap:{pr['id']}", pr.get("title", ""), pr.get("company") or "", f"{loc} ({pr.get('contractType', '')}) {extra}",
+                 (pr.get("created") or "")[:10], "https://www.freelancermap.de" + (pr.get("url") or f"/projekt/{pr.get('slug')}"))
+
+
+def s_99freelas(terms):
+    """99freelas (Brazil freelance projects, in Portuguese)."""
+    for t in terms:
+        page = get(f"https://www.99freelas.com.br/projects?q={urllib.parse.quote(t)}")
+        if not page:
+            continue
+        for slug, title in set(re.findall(r'href="/project/([a-z0-9-]+-\d+)\?fs=t">(.*?)</a>', page)):
+            jid = slug.rsplit("-", 1)[1]
+            emit(f"99freelas:{jid}", title, "", "Brazil (freelance, remote)", "", f"https://www.99freelas.com.br/project/{slug}")
+
+
 # ---------- detail ----------
 def detail(items, out):
     os.makedirs(out, exist_ok=True)
@@ -337,7 +372,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("search")
-    s.add_argument("board", choices=["vdab", "owlie", "stepstone", "remoteok", "wwr", "landing", "itjobs", "netempregos", "vagas", "gupy", "hellojobs"])
+    s.add_argument("board", choices=["vdab", "owlie", "stepstone", "remoteok", "wwr", "landing", "itjobs", "netempregos", "vagas", "gupy", "hellojobs", "freelancermap", "99freelas"])
     s.add_argument("terms", nargs="*")
     d = sub.add_parser("detail")
     d.add_argument("items", nargs="+")
