@@ -66,7 +66,8 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 - Languages: Portuguese native, English C2, Spanish intermediate, Dutch beginner. No French, Italian, German.
 - Does not code. No SQL yet. No-code/low-code: n8n, Zapier, Clay, HubSpot, Customer.io, Lemlist, Notion, Claude/MCP, Lovable, Framer.
 - Contact: ofranciscofaria@gmail.com, Belgian +32 483 10 23 49, Portuguese +351 964 506 318, linkedin.com/in/fariafrancisco. Lives in Ghent, Belgium.
-- Open to relocating (Berlin, Dublin, Porto, Lisbon, etc.) when the role is worth it; notice period unknown.
+- Open to relocating (Berlin, Dublin, Porto, Lisbon, etc.) when the role is worth it.
+- Notice period: 3 weeks (Belgian law, Bizzy contract from 1 Feb 2026; becomes 4 weeks from 1 Feb 2027). Roles in Belgium or remote: "can start about 3 weeks after an offer". Roles that need a move: add 1-2 weeks to settle, "about 4-5 weeks after an offer". He told Oktogon and Coverflex "8 weeks" before checking (corrected 2026-10-07); never write 8 weeks again.
 - Loves football (considered a sports marketing career). Interests line can start with Football when relevant.
 - Self-description he likes: "systems-minded". Top soft skills in order: ownership/initiative, quick learning, adaptability, results-focused.
 
