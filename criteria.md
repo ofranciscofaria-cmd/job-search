@@ -2,6 +2,20 @@
 
 Last updated: 2026-09-25 (Netherlands moved up to priority 3; warm countries and sponsored roles in Dubai/Asia added). Edit this file to change what the job scan looks for.
 
+## FOCUS MODE: Belgium + Portugal only (temporary, added 2026-10-09)
+**Status: ON**  (Francisco can say "turn focus mode off"; then set this line to OFF and follow "To turn it off" below.)
+
+While ON, this section overrides "Locations", "Sources to search after LinkedIn", Gaming and Sports where they conflict:
+- Keep only roles located in **Belgium (any city) or Portugal (any city)**, plus remote roles whose posting explicitly allows working from Belgium or Portugal (e.g. "Remote, Europe" that includes them). Everything else is ruled out as "outside focus area (BE/PT)", reported as one count line in section 6, not one by one.
+- LinkedIn: search only the Belgium and Portugal locations (country-level "Belgium" and "Portugal" plus their main cities) and "European Union" with the remote filter; skip every other location set (NL, Ireland, France, Brazil, Macau, warm countries, other EU hubs, working holiday, etc.).
+- Boards: run only VDAB, Owlie, StepStone (Belgium), Landing.jobs, itjobs, net-empregos and the remote boards (RemoteOK, We Work Remotely, keep only BE/PT-eligible). Skip Gupy, Vagas and hello-jobs. Indeed connector: countries BE and PT only. ATS web searches: Belgium/Portugal/Lisbon/Porto/Brussels/Ghent/Antwerp terms only.
+- Fit labels, hard filters and pay rules stay the same.
+- Out-of-area roles are still added to seen-jobs.txt with the note "outside focus area (BE/PT) 2026-10-09+" so they are not re-read while focus mode is on.
+
+**What was paused when it was turned on (2026-10-09):** 45 Notion rows with Status New and Fit Stretch outside Belgium/Portugal were set to Status **On hold**, each with Next action set to "FOCUS BE/PT: paused 2026-10-09, restore to New when focus mode is off" Kept as New: Decathlon Belgium, MSF Portugal, Sodexo (Matosinhos), LT - Marketing Digital (Almada), Quinta Filippa (Leiria).
+
+**To turn it off:** set Status above to OFF (or delete this section); then in Notion, for every row with Status On hold whose Next action starts with "FOCUS BE/PT: paused", set Status back to New, clear that Next action, set Last update, and check each posting is still open (set Closed if not). Finally delete the lines in seen-jobs.txt whose note says "outside focus area (BE/PT)", so the next run can read those postings again if they are still open.
+
 ## Profile
 - Current: GTM Strategy & Operations at Bizzy (Ghent, Belgium), Jul 2025 to present. RevOps/GTM systems work, AI agents (Claude/MCP), n8n, HubSpot, Clay, Lemlist, Notion. 1.5M+ EUR pipeline built.
 - Earlier: La Lorraine Bakery Group, Market Research & Strategy Consultant (Apr-Jun 2025); Blisq Creative (Portugal), curricular marketing internship (Feb-Jun 2024).

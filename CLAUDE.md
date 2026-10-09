@@ -114,6 +114,7 @@ You are helping Francisco Faria with his job search. He usually talks to you fro
 - Roles he skips: Notion Status Not relevant (+ My feedback with his reason); mark "skipped by Francisco" in `seen-jobs.txt`. Roles he pauses: Status On hold with the reason in Watch out.
 
 ## Changing the search
+- Temporary focus mode (Belgium + Portugal only, since 2026-10-09) lives at the top of `criteria.md` with an ON/OFF switch and the exact steps to undo it. If he says "turn focus mode off" (or similar), follow those steps.
 - If he says a kind of role, city or company should be included or excluded, update `criteria.md` (keep its structure), commit, and tell him what changed. The daily routine reads it every morning.
 
 ## What to apply to (tracker rules)
