@@ -51,7 +51,7 @@
     },
     {
       "parameters": {
-        "content": "### 3. Chat (RAG at answer time)\nPublic chat trigger = the production webhook to test.\nThe agent must call the knowledge-base tool first (top 5 chunks), and answers only from them; if nothing relevant comes back it says so and offers a demo, instead of inventing prices or tax rules.\nWindow memory (last 10 messages) so follow-ups like \"and for 20 people?\" work.\nModel: Gemini 2.5 Flash (fast and cheap for a website chat; any chat model can be swapped in). Temperature low for factual answers.",
+        "content": "### 3. Chat (RAG at answer time)\nPublic chat trigger = the production webhook to test.\nThe agent must call the knowledge-base tool first (top 5 chunks), and answers only from them; if nothing relevant comes back it says so and offers a demo, instead of inventing prices or tax rules.\nWindow memory (last 10 messages) so follow-ups like \"and for 20 people?\" work.\nModel: Gemini Flash Lite (latest) (fast and cheap for a website chat; any chat model can be swapped in). Temperature low for factual answers.",
         "height": 300,
         "width": 640,
         "color": 5
@@ -279,7 +279,7 @@
     },
     {
       "parameters": {
-        "modelName": "models/gemini-2.5-flash",
+        "modelName": "models/gemini-flash-lite-latest",
         "options": {
           "temperature": 0.2,
           "maxOutputTokens": 800
