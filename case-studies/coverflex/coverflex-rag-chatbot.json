@@ -3,7 +3,7 @@
   "nodes": [
     {
       "parameters": {
-        "content": "## Coverflex prospect chatbot (RAG)\n**Part A (top):** scrape coverflex.com -> clean -> chunk -> embed -> Pinecone. Run manually once (and again when the site changes).\n**Part B (bottom):** public chat -> AI agent -> searches the knowledge base on every question -> answers only from Coverflex content.\n\n**Setup:** credentials for OpenAI (embeddings), Anthropic (chat) and Pinecone. Pinecone index `coverflex-kb`, dimension 1536, cosine.",
+        "content": "## Coverflex prospect chatbot (RAG)\n**Part A (top):** scrape coverflex.com -> clean -> chunk -> embed -> Pinecone. Run manually once (and again when the site changes).\n**Part B (bottom):** public chat -> AI agent -> searches the knowledge base on every question -> answers only from Coverflex content.\n\n**Setup:** one Google Gemini API key (embeddings + chat) and Pinecone. Pinecone index `coverflex-kb`, dimension 3072 (gemini-embedding-001), cosine.",
         "height": 300,
         "width": 520,
         "color": 4
@@ -35,7 +35,7 @@
     },
     {
       "parameters": {
-        "content": "### 2. Cleaning, chunking, embedding\nThe menu, forms and scripts repeat on every page: removed before embedding, otherwise every chunk would look alike and retrieval gets worse.\nChunks of ~1,000 characters with 150 overlap: big enough to keep a FAQ question with its answer, small enough to retrieve precisely. Each chunk keeps its source URL and title as metadata (for citations).\n`Clear namespace` on insert, so a re-run replaces old content instead of duplicating it.",
+        "content": "### 2. Cleaning, chunking, embedding\nThe menu, forms, scripts and any line repeated on more than 20% of pages (footer, banners) are removed before embedding, otherwise every chunk would look alike and retrieval gets worse.\nChunks of ~1,000 characters with 150 overlap: big enough to keep a FAQ question with its answer, small enough to retrieve precisely. Each chunk keeps its source URL and title as metadata (for citations).\n`Clear namespace` on insert, so a re-run replaces old content instead of duplicating it.",
         "height": 300,
         "width": 640,
         "color": 7
@@ -51,7 +51,7 @@
     },
     {
       "parameters": {
-        "content": "### 3. Chat (RAG at answer time)\nPublic chat trigger = the production webhook to test.\nThe agent must call the knowledge-base tool first (top 5 chunks), and answers only from them; if nothing relevant comes back it says so and offers a demo, instead of inventing prices or tax rules.\nWindow memory (last 10 messages) so follow-ups like \"and for 20 people?\" work.\nModel: Claude Haiku (fast and cheap for a website chat). Temperature low for factual answers.",
+        "content": "### 3. Chat (RAG at answer time)\nPublic chat trigger = the production webhook to test.\nThe agent must call the knowledge-base tool first (top 5 chunks), and answers only from them; if nothing relevant comes back it says so and offers a demo, instead of inventing prices or tax rules.\nWindow memory (last 10 messages) so follow-ups like \"and for 20 people?\" work.\nModel: Gemini 2.5 Flash (fast and cheap for a website chat; any chat model can be swapped in). Temperature low for factual answers.",
         "height": 300,
         "width": 640,
         "color": 5
@@ -153,7 +153,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Turn each fetched page into clean text for the knowledge base.\n// Removes scripts, styles, menus and forms (the menu repeats on every page and would make all chunks look alike).\nconst urls = $('Filter product & FAQ pages').all().map(i => i.json.url);\nconst out = [];\n$input.all().forEach((item, i) => {\n  let h = item.json.data || '';\n  const t = h.match(/<title>([\\s\\S]*?)<\\/title>/i);\n  const title = t ? t[1].trim() : '';\n  h = h.replace(/<(script|style|noscript|svg|nav|header|footer|form|button)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi, ' ');\n  h = h.replace(/<(h[1-4])[^>]*>/gi, '\\n\\n## ');\n  h = h.replace(/<\\/(p|div|li|h[1-4]|section|span)>/gi, '\\n');\n  h = h.replace(/<[^>]+>/g, ' ');\n  h = h.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, \"'\").replace(/&quot;/g, '\"').replace(/&euro;/g, '€');\n  h = h.replace(/[ \\t]+/g, ' ').replace(/\\n\\s*\\n+/g, '\\n').trim();\n  const text = h.split('\\n').map(l => l.trim()).filter(l => l.length > 2).join('\\n');\n  if (text.length > 300) out.push({ json: { url: urls[i] || '', title, text } });\n});\nreturn out;"
+        "jsCode": "// Turn each fetched page into clean text for the knowledge base.\n// 1) Remove scripts, styles, menus and forms.\n// 2) Remove boilerplate lines that appear on many pages (footer, menus, banners): left in, every chunk looks alike and retrieval gets worse.\nconst urls = $('Filter product & FAQ pages').all().map(i => i.json.url);\nconst pages = $input.all().map((item, i) => {\n  let h = item.json.data || '';\n  const t = h.match(/<title>([\\s\\S]*?)<\\/title>/i);\n  const title = t ? t[1].trim() : '';\n  h = h.replace(/<(script|style|noscript|svg|nav|header|footer|form|button)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi, ' ');\n  h = h.replace(/<(h[1-4])[^>]*>/gi, '\\n\\n## ');\n  h = h.replace(/<\\/(p|div|li|h[1-4]|section|span)>/gi, '\\n');\n  h = h.replace(/<[^>]+>/g, ' ');\n  h = h.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, \"'\").replace(/&quot;/g, '\"').replace(/&euro;/g, '€');\n  const lines = h.split('\\n').map(l => l.replace(/[ \\t]+/g, ' ').trim()).filter(l => l.length > 2);\n  return { url: urls[i] || '', title, lines };\n});\n// Count on how many pages each line appears; drop lines found on more than 20% of pages\nconst freq = {};\npages.forEach(p => new Set(p.lines).forEach(l => { freq[l] = (freq[l] || 0) + 1; }));\nconst limit = Math.max(3, pages.length * 0.2);\nreturn pages\n  .map(p => ({ json: { url: p.url, title: p.title, text: p.lines.filter(l => freq[l] <= limit).join('\\n') } }))\n  .filter(p => p.json.text.length > 300);"
       },
       "id": "9b29eb5a-cab4-402c-ad92-2cc2f530e5e5",
       "name": "Clean HTML to text",
@@ -232,13 +232,12 @@
     },
     {
       "parameters": {
-        "model": "text-embedding-3-small",
-        "options": {}
+        "modelName": "models/gemini-embedding-001"
       },
       "id": "9a1099c7-8519-4679-b98f-54e314f18c94",
-      "name": "Embeddings (ingest)",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1.2,
+      "name": "Gemini embeddings (ingest)",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
       "position": [
         1420,
         80
@@ -280,16 +279,16 @@
     },
     {
       "parameters": {
-        "model": "claude-haiku-4-5-20251001",
+        "modelName": "models/gemini-2.5-flash",
         "options": {
           "temperature": 0.2,
-          "maxTokensToSample": 600
+          "maxOutputTokens": 800
         }
       },
       "id": "9767d368-e50c-4ba5-92fd-bd81f52c364d",
-      "name": "Claude (chat model)",
-      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
-      "typeVersion": 1.2,
+      "name": "Gemini (chat model)",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
       "position": [
         620,
         780
@@ -335,13 +334,12 @@
     },
     {
       "parameters": {
-        "model": "text-embedding-3-small",
-        "options": {}
+        "modelName": "models/gemini-embedding-001"
       },
       "id": "5af30461-459b-4fbe-affd-8c0d6f8a8156",
-      "name": "Embeddings (query)",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
-      "typeVersion": 1.2,
+      "name": "Gemini embeddings (query)",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+      "typeVersion": 1,
       "position": [
         960,
         980
@@ -406,17 +404,6 @@
         ]
       ]
     },
-    "Embeddings (ingest)": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Pinecone: insert chunks",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Load page text + metadata": {
       "ai_document": [
         [
@@ -450,17 +437,6 @@
         ]
       ]
     },
-    "Claude (chat model)": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "Coverflex assistant (agent)",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Memory (last 10 messages)": {
       "ai_memory": [
         [
@@ -483,17 +459,6 @@
         ]
       ]
     },
-    "Embeddings (query)": {
-      "ai_embedding": [
-        [
-          {
-            "node": "Coverflex knowledge base (tool)",
-            "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Sitemaps to read": {
       "main": [
         [
@@ -511,6 +476,39 @@
           {
             "node": "Filter product & FAQ pages",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini embeddings (ingest)": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone: insert chunks",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini embeddings (query)": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Coverflex knowledge base (tool)",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini (chat model)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Coverflex assistant (agent)",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
