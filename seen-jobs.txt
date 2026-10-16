@@ -49408,4 +49408,4 @@ ats:platformscience-6555609003 Platform Science Marketing Specialist Leuven - cl
 ats:jobgether-d2949847 Jobgether Revenue Operations Associate - closed (Lever 404) (source: other)
 ats:jobgether-bc53fbce Jobgether GTM Strategist Belgium - closed (Lever 404) (source: other)
 other:sweetcare-dms Sweetcare Digital Marketing Specialist (CRM/Growth) Porto - closed (Landing.jobs 410) (source: other)
-4473280708  # Closum Growth Marketing Manager: applied 2026-10-04, offer declined by Francisco 2026-10-16 (salary)
+4473280708 Closum Growth Marketing Manager - applied 2026-10-04, offer declined by Francisco 2026-10-16 (salary) (source: linkedin)
