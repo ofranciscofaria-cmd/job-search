@@ -1,167 +1,78 @@
 {
-  "name": "Coverflex prospect chatbot (RAG) - Francisco Faria",
+  "name": "Coverflex RAG Chatbot (case study)",
   "nodes": [
     {
-      "parameters": {
-        "content": "## Coverflex prospect chatbot (RAG)\n**Part A (top):** scrape coverflex.com -> clean -> chunk -> embed -> Pinecone. Run manually once (and again when the site changes).\n**Part B (bottom):** public chat -> AI agent -> searches the knowledge base on every question -> answers only from Coverflex content.\n\n**Setup:** one Google Gemini API key (embeddings + chat) and Pinecone. Pinecone index `coverflex-kb`, dimension 3072 (gemini-embedding-001), cosine.",
-        "height": 300,
-        "width": 520,
-        "color": 4
-      },
-      "id": "6325d949-71d1-4d00-a79b-6394664b6499",
-      "name": "Note: overview",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        -80,
-        -460
-      ]
-    },
-    {
-      "parameters": {
-        "content": "### 1. Scraping\nSitemaps first: they list every public page, so no crawler is needed. Two sitemaps: English Portugal site (`/en-pt`) and the Portuguese site (`/pt`), because the full FAQ answers (e.g. pricing) are on the Portuguese pages. About 120 pages kept: products, pricing + FAQ, solutions, industries, customer stories, platform news. Blog, legal, simulators and the 2,000+ nursery directory pages are skipped (noise).\nPages are fetched in batches of 5 with a 1s pause to be polite to the site.",
-        "height": 260,
-        "width": 620,
-        "color": 7
-      },
-      "id": "deb6e6fc-3402-468c-98b7-31ec42220899",
-      "name": "Note: scraping",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        480,
-        -460
-      ]
-    },
-    {
-      "parameters": {
-        "content": "### 2. Cleaning, chunking, embedding\nThe menu, forms, scripts and any line repeated on more than 20% of pages (footer, banners) are removed before embedding, otherwise every chunk would look alike and retrieval gets worse.\nChunks of ~1,000 characters with 150 overlap: big enough to keep a FAQ question with its answer, small enough to retrieve precisely. Each chunk keeps its source URL and title as metadata (for citations).\n`Clear namespace` on insert, so a re-run replaces old content instead of duplicating it.",
-        "height": 300,
-        "width": 640,
-        "color": 7
-      },
-      "id": "d70bd5c9-0d61-4650-b9d7-8e454b7a08ab",
-      "name": "Note: cleaning & chunking",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        1120,
-        -460
-      ]
-    },
-    {
-      "parameters": {
-        "content": "### 3. Chat (RAG at answer time)\nPublic chat trigger = the production webhook to test.\nThe agent must call the knowledge-base tool first (top 5 chunks), and answers only from them; if nothing relevant comes back it says so and offers a demo, instead of inventing prices or tax rules.\nWindow memory (last 10 messages) so follow-ups like \"and for 20 people?\" work.\nModel: Gemini Flash Lite (latest) (fast and cheap for a website chat; any chat model can be swapped in). Temperature low for factual answers.",
-        "height": 300,
-        "width": 640,
-        "color": 5
-      },
-      "id": "5d3ff78f-e5e3-4e76-b211-39e08513279d",
-      "name": "Note: chat",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        480,
-        180
-      ]
-    },
-    {
-      "parameters": {
-        "content": "### What I would add in production\n- Schedule trigger (weekly re-scrape) + alert if a page fails.\n- Separate namespaces per market (PT/ES/IT/DE) and route by language.\n- Log every question + retrieved chunks to a sheet/HubSpot: shows content gaps and buying intent.\n- Hand-off: if the visitor gives company + email, create the contact in HubSpot and a task for a BDR.\n- Eval set of 20 real questions to check answers after each change.",
-        "height": 300,
-        "width": 560,
-        "color": 6
-      },
-      "id": "5908b031-f990-46f0-8ea5-3eccc564ef48",
-      "name": "Note: next steps",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        1180,
-        180
-      ]
-    },
-    {
       "parameters": {},
-      "id": "c80f9891-3049-4d8d-a842-e940e07e10e3",
-      "name": "Run ingestion (manual)",
+      "id": "1c81e1de-350b-4795-8e74-d1ec962ee29b",
+      "name": "Run Ingestion",
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        500,
-        -120
+        0,
+        0
       ]
     },
     {
       "parameters": {
-        "url": "={{ $json.sitemap }}",
-        "options": {
-          "response": {
-            "response": {
-              "responseFormat": "text"
-            }
-          }
-        }
+        "jsCode": "const base = 'https://www.coverflex.com';\nconst pt = ['pt', 'pt/precos', 'pt/wallet', 'pt/cartao-refeicao', 'pt/seguros', 'pt/cheque-infancia', 'pt/flexpay', 'pt/budgets', 'pt/transparencia-salarial', 'pt/proposta-emprego', 'pt/ai', 'pt/descontos', 'pt/beneficios', 'pt/colaborador', 'pt/sobre-nos', 'pt/industrias', 'pt/solucao/gestores-recursos-humanos', 'pt/solucao/diretores-financeiros', 'pt/solucao/ceo-founders', 'pt/solucao/pequenas-empresas', 'pt/solucao/medias-empresas', 'pt/solucao/grandes-empresas'];\nconst en = ['en-pt', 'en-pt/pricing', 'en-pt/wallet', 'en-pt/meal', 'en-pt/insurance', 'en-pt/childcare', 'en-pt/flexpay', 'en-pt/budgets', 'en-pt/pay-transparency', 'en-pt/job-offer', 'en-pt/ai', 'en-pt/discounts', 'en-pt/benefits', 'en-pt/employee', 'en-pt/about-us', 'en-pt/industries', 'en-pt/solution/small-companies', 'en-pt/solution/medium-companies', 'en-pt/solution/large-companies'];\nreturn [\n  ...pt.map(p => ({ json: { url: `${base}/${p}`, lang: 'pt' } })),\n  ...en.map(p => ({ json: { url: `${base}/${p}`, lang: 'en' } })),\n];"
       },
-      "id": "5a3eee27-095c-48de-8002-7256365668a3",
-      "name": "Get sitemaps",
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        700,
-        -120
-      ]
-    },
-    {
-      "parameters": {
-        "jsCode": "// Read both sitemaps (English Portugal site + Portuguese site) and keep the pages a prospect would ask about:\n// products, pricing (the Portuguese pricing page has the full FAQ answers), solutions, industries,\n// customer stories and platform news. Skips the blog, legal pages, the 2,000+ nursery directory pages, simulators and templates.\nconst keepEn = u => /\\/en-pt(\\/|$)/.test(u) && !/(\\/legal|\\/brand|\\/lets-talk|\\/press|\\/careers)/i.test(u);\nconst keepPt = u => /\\/pt(\\/(seguros|wallet|cartao-refeicao|cheque-infancia|flexpay|budgets|transparencia-salarial|proposta-emprego|ai|descontos|precos|beneficios|parceiros|programa-de-recomendacoes|sobre-nos|colaborador|industrias?|solucao|historias|novidades-plataforma)(\\/|$)|$)/.test(u);\nconst seen = new Set();\nconst out = [];\nfor (const item of $input.all()) {\n  const xml = item.json.data || '';\n  for (const m of xml.matchAll(/<loc>([^<]+)<\\/loc>/g)) {\n    const url = m[1].trim().replace(/\\/\\/+(?=[^\\/])/g, (s, i) => i < 8 ? s : '/');\n    if (seen.has(url)) continue;\n    if (keepEn(url) || keepPt(url)) { seen.add(url); out.push({ json: { url } }); }\n  }\n}\nreturn out;"
-      },
-      "id": "012d3a59-ccce-4e7f-a2c8-250320839355",
-      "name": "Filter product & FAQ pages",
+      "id": "9d16c1fc-e2f9-4ff9-8655-ce37c6671e9b",
+      "name": "Curated Page List",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        900,
-        -120
+        224,
+        0
       ]
     },
     {
       "parameters": {
         "url": "={{ $json.url }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (compatible; CoverflexCaseStudyBot/1.0)"
+            }
+          ]
+        },
         "options": {
           "batching": {
             "batch": {
               "batchSize": 5,
-              "batchInterval": 1000
+              "batchInterval": 500
             }
           },
           "response": {
             "response": {
-              "responseFormat": "text"
+              "responseFormat": "text",
+              "outputPropertyName": "html"
             }
-          }
+          },
+          "timeout": 20000
         }
       },
-      "id": "a96340d6-2de2-4bd9-a7b3-e54f9f491ef6",
-      "name": "Fetch page HTML",
+      "id": "c998e968-5c02-4100-9a27-f4850c0eca6d",
+      "name": "Fetch Page HTML",
       "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "typeVersion": 4.5,
       "position": [
-        1100,
-        -120
+        448,
+        0
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Turn each fetched page into clean text for the knowledge base.\n// 1) Remove scripts, styles, menus and forms.\n// 2) Remove boilerplate lines that appear on many pages (footer, menus, banners): left in, every chunk looks alike and retrieval gets worse.\nconst urls = $('Filter product & FAQ pages').all().map(i => i.json.url);\nconst pages = $input.all().map((item, i) => {\n  let h = item.json.data || '';\n  const t = h.match(/<title>([\\s\\S]*?)<\\/title>/i);\n  const title = t ? t[1].trim() : '';\n  h = h.replace(/<(script|style|noscript|svg|nav|header|footer|form|button)\\b[^>]*>[\\s\\S]*?<\\/\\1>/gi, ' ');\n  h = h.replace(/<(h[1-4])[^>]*>/gi, '\\n\\n## ');\n  h = h.replace(/<\\/(p|div|li|h[1-4]|section|span)>/gi, '\\n');\n  h = h.replace(/<[^>]+>/g, ' ');\n  h = h.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&#39;/g, \"'\").replace(/&quot;/g, '\"').replace(/&euro;/g, '€');\n  const lines = h.split('\\n').map(l => l.replace(/[ \\t]+/g, ' ').trim()).filter(l => l.length > 2);\n  return { url: urls[i] || '', title, lines };\n});\n// Count on how many pages each line appears; drop lines found on more than 20% of pages\nconst freq = {};\npages.forEach(p => new Set(p.lines).forEach(l => { freq[l] = (freq[l] || 0) + 1; }));\nconst limit = Math.max(3, pages.length * 0.2);\nreturn pages\n  .map(p => ({ json: { url: p.url, title: p.title, text: p.lines.filter(l => freq[l] <= limit).join('\\n') } }))\n  .filter(p => p.json.text.length > 300);"
+        "jsCode": "// Turns raw Webflow HTML into light markdown and removes site-wide boilerplate.\n// Boilerplate rule: a line that appears on >= 40% of the pages of the same language\n// (nav menu, footer, cookie banner, popups) is not page content, so we drop it.\nconst pages = $('Curated Page List').all();\nconst responses = $input.all();\nconst BOILERPLATE_SHARE = 0.4;\nconst WINDOW = 4;\n\nconst entities = { amp: '&', lt: '<', gt: '>', quot: '\"', apos: \"'\", nbsp: ' ', rsquo: '’', lsquo: '‘', ldquo: '“', rdquo: '”', ndash: '–', mdash: '—', hellip: '…', euro: '€' };\nconst decode = s => s\n  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))\n  .replace(/&#(\\d+);/g, (_, d) => String.fromCodePoint(Number(d)))\n  .replace(/&([a-z]+);/gi, (m, n) => entities[n.toLowerCase()] ?? m);\n\nfunction toLines(html) {\n  let s = html;\n  s = s.replace(/<head\\b[\\s\\S]*?<\\/head>/i, ' ');\n  s = s.replace(/<(script|style|svg|noscript|form|iframe|template)\\b[\\s\\S]*?<\\/\\1>/gi, ' ');\n  s = s.replace(/<!--[\\s\\S]*?-->/g, ' ');\n  s = s.replace(/<h1\\b[^>]*>/gi, '\\n# ').replace(/<h2\\b[^>]*>/gi, '\\n## ').replace(/<h[3-6]\\b[^>]*>/gi, '\\n### ');\n  s = s.replace(/<li\\b[^>]*>/gi, '\\n- ');\n  s = s.replace(/<\\/?(p|div|section|br|h[1-6]|li|ul|ol|tr|nav|a|button)\\b[^>]*>/gi, '\\n');\n  s = decode(s.replace(/<[^>]+>/g, ''));\n  return s.split('\\n')\n    .map(l => l.replace(/\\s+/g, ' ').trim())\n    .filter(l => l && !['#', '##', '###', '-'].includes(l));\n}\n\nconst parsed = responses.map((r, i) => {\n  const html = r.json.html || '';\n  const title = decode((html.match(/<title>([^<]*)<\\/title>/i) || [])[1] || '').trim();\n  return { url: pages[i].json.url, lang: pages[i].json.lang, title, lines: toLines(html) };\n});\n\n// Count on how many pages (per language) each line appears.\nconst freq = { pt: new Map(), en: new Map() };\nconst total = { pt: 0, en: 0 };\nfor (const p of parsed) {\n  total[p.lang]++;\n  for (const l of new Set(p.lines)) freq[p.lang].set(l, (freq[p.lang].get(l) || 0) + 1);\n}\n\n// Repeated blocks keep only their first copy (per language): whole sections\n// (heading + text) and any run of 4+ lines already seen. Some pages repeat blocks,\n// e.g. an older plans block on 5 pages, which otherwise crowds out search results.\nconst seenSections = { pt: new Set(), en: new Set() };\nconst seenWindows = { pt: new Set(), en: new Set() };\n\nreturn parsed.map(p => {\n  const out = [];\n  for (const l of p.lines) {\n    if (freq[p.lang].get(l) >= BOILERPLATE_SHARE * total[p.lang]) continue;\n    if (out[out.length - 1] === l) continue;\n    const isQuestion = l.endsWith('?') && l.length < 200 && !l.startsWith('#');\n    out.push(isQuestion ? `### ${l}` : l);\n  }\n\n  const sections = [];\n  for (const l of out) {\n    if (!sections.length || l.startsWith('#')) sections.push([l]);\n    else sections[sections.length - 1].push(l);\n  }\n  const kept = [];\n  for (const s of sections) {\n    const key = s.join('\\n');\n    if (key.length > 40 && seenSections[p.lang].has(key)) continue;\n    seenSections[p.lang].add(key);\n    kept.push(...s);\n  }\n\n  const drop = new Array(kept.length).fill(false);\n  for (let i = 0; i + WINDOW <= kept.length; i++) {\n    const w = kept.slice(i, i + WINDOW).join('\\n');\n    if (seenWindows[p.lang].has(w)) for (let j = i; j < i + WINDOW; j++) drop[j] = true;\n    seenWindows[p.lang].add(w);\n  }\n\n  const text = kept.filter((_, i) => !drop[i]).join('\\n');\n  return { json: { url: p.url, lang: p.lang, title: p.title, chars: text.length, text } };\n});\n"
       },
-      "id": "9b29eb5a-cab4-402c-ad92-2cc2f530e5e5",
-      "name": "Clean HTML to text",
+      "id": "901607a5-cb80-4561-b69b-f89fe8c80c50",
+      "name": "Clean HTML to Markdown",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1300,
-        -120
+        672,
+        0
       ]
     },
     {
@@ -169,28 +80,53 @@
         "mode": "insert",
         "pineconeIndex": {
           "__rl": true,
-          "value": "coverflex-kb",
           "mode": "list",
+          "value": "coverflex-kb",
           "cachedResultName": "coverflex-kb"
         },
+        "embeddingBatchSize": 100,
         "options": {
-          "clearNamespace": true,
-          "pineconeNamespace": "coverflex-en-pt"
+          "clearNamespace": "={{ $runIndex === 0 }}",
+          "pineconeNamespace": "coverflex-site"
         }
       },
-      "id": "b88384a7-1099-4a1f-8db4-fff522a30d93",
-      "name": "Pinecone: insert chunks",
+      "id": "0db5e49e-9b5c-4b1f-9480-00beca1afe0b",
+      "name": "Insert into Pinecone",
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        1088,
+        0
+      ],
+      "credentials": {
+        "pineconeApi": {
+          "id": "hPpCWY35tN02nK2C",
+          "name": "Pinecone account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "3ab7802d-bcd3-4efe-a9b9-c0d17604adbc",
+      "name": "Gemini Embeddings (ingest)",
+      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1520,
-        -120
-      ]
+        832,
+        224
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "P26zG91JKY8qBi5n",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     },
     {
       "parameters": {
         "jsonMode": "expressionData",
         "jsonData": "={{ $json.text }}",
+        "textSplittingMode": "custom",
         "options": {
           "metadata": {
             "metadataValues": [
@@ -201,323 +137,476 @@
               {
                 "name": "title",
                 "value": "={{ $json.title }}"
+              },
+              {
+                "name": "lang",
+                "value": "={{ $json.lang }}"
               }
             ]
           }
         }
       },
-      "id": "b316cb6d-1f18-4cc8-aa31-12e3154d1358",
-      "name": "Load page text + metadata",
+      "id": "1f293c96-9092-4ad2-bca9-dc4debf11278",
+      "name": "Page Loader (+ metadata)",
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
-      "typeVersion": 1,
+      "typeVersion": 1.1,
       "position": [
-        1560,
-        80
+        1008,
+        224
       ]
     },
     {
       "parameters": {
-        "chunkSize": 1000,
         "chunkOverlap": 150,
-        "options": {}
+        "options": {
+          "splitCode": "markdown"
+        }
       },
-      "id": "8d5a632f-7da6-4d8c-841f-d4029360d311",
-      "name": "Split into chunks",
+      "id": "77ceb589-701e-40d3-a87c-292b9b5ea54d",
+      "name": "Markdown Splitter (1000/150)",
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        1660,
-        240
+        1088,
+        432
       ]
     },
     {
       "parameters": {
-        "modelName": "models/gemini-embedding-001"
+        "options": {}
       },
-      "id": "9a1099c7-8519-4679-b98f-54e314f18c94",
-      "name": "Gemini embeddings (ingest)",
-      "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
-      "typeVersion": 1,
+      "id": "b4cb3b96-f465-4733-972f-e838fbcd6d94",
+      "name": "Loop: One Page at a Time",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
       "position": [
-        1420,
-        80
+        880,
+        -208
       ]
+    },
+    {
+      "parameters": {
+        "amount": 30
+      },
+      "id": "9c42fae6-b8aa-4d7e-944f-952406c707c9",
+      "name": "Wait 30s (Gemini rate limit)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1312,
+        0
+      ],
+      "webhookId": "45851496-ebac-4496-a2bc-84b082fd328d"
     },
     {
       "parameters": {
         "public": true,
-        "initialMessages": "Hi! I'm the Coverflex assistant. Ask me anything about meal cards, benefits, insurance or pricing.",
+        "initialMessages": "Olá! 👋 Sou o assistente da Coverflex. Pergunta-me sobre planos, preços, cartão refeição, seguros ou benefícios flexíveis.\nHi! 👋 I'm the Coverflex assistant. Ask me about plans, pricing, the meal card, insurance or flexible benefits.",
         "options": {
-          "title": "Coverflex assistant",
-          "subtitle": "Answers based on coverflex.com"
+          "inputPlaceholder": "Escreve a tua pergunta / Type your question…",
+          "subtitle": "Respostas com base no site coverflex.com · Answers based on coverflex.com",
+          "title": "Coverflex Assistant",
+          "responseMode": "lastNode"
         }
       },
-      "id": "0b75bac3-0255-4d3b-8496-042c30731441",
-      "name": "Chat with prospects",
+      "id": "1b8adff7-0c9d-4f2b-8450-44aa154aeb14",
+      "name": "Prospect Chat",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
-      "typeVersion": 1.1,
+      "typeVersion": 1.5,
       "position": [
-        500,
-        560
+        0,
+        704
       ],
-      "webhookId": "7a8f8d11-ee8b-4c53-9f78-6519bcf5b473"
+      "webhookId": "bf2147f0-6c6d-469d-9ce8-4e90234a4779"
     },
     {
       "parameters": {
+        "promptType": "define",
+        "text": "=({{ (() => { const m = $json.chatInput || ''; if (/[¿¡ñ]|\\b(hola|tienen|empleados|cuánto|cuesta|gracias|quiero|trabajadores|españa)\\b/i.test(m)) return 'Responde en español.'; if (/\\b(ciao|buongiorno|quanto costa|dipendenti|azienda|grazie|vorrei|avete|italia)\\b/i.test(m)) return 'Rispondi in italiano.'; if (/[ãõçáàâêôéíóú]|\\b(ola|bom dia|boa tarde|quanto|quero|posso|qual|quais|nao|obrigad[oa]|empresa|colaboradores|cartao|seguro|tenho|fazer)\\b/i.test(m)) return 'Responde em português de Portugal (usa \"tu\").'; return 'Reply in English.'; })() }})\n{{ $json.chatInput }}",
+        "needsFallback": true,
         "options": {
-          "systemMessage": "You are Coverflex's website assistant for prospects (companies that do not use Coverflex yet).\n\nHow to answer:\n1. ALWAYS search the coverflex_knowledge_base tool before answering any question about Coverflex (products, pricing, plans, meal card, insurance, childcare, Flexpay, budgets, pay transparency, job offers, AI, integrations, customers).\n2. Answer ONLY with facts found in the retrieved content. If the answer is not there, say you are not sure and offer a call with the team: https://www.coverflex.com/en-pt/lets-talk . Never invent prices, tax rules or features.\n3. Reply in the language the user writes in (Portuguese, English, Spanish or Italian).\n4. Keep answers short (2-5 sentences), friendly and concrete. End with the source page URL when useful.\n5. When it fits naturally, ask one qualifying question (company size, country, what they use today for meal allowance or benefits) and suggest a demo for next steps.\n6. If the user is an existing customer or employee with a support issue, point them to Coverflex support instead of answering account-specific questions.\n7. Tax and legal values can change: present them as \"according to our website\" and recommend confirming with the team."
+          "systemMessage": "You are the website assistant of Coverflex, helping companies that are evaluating Coverflex in Portugal (HR, finance, founders/CEOs).\n\nRULES\n1. For any question about Coverflex (products, plans, pricing, benefits, meal card, insurance, childcare, taxes, how it works, integrations), ALWAYS call the tool `coverflex_website_search` first, and answer ONLY with information found in its results. Never use outside or general knowledge about Coverflex. If the first search is weak, search again with a reworded query (try Portuguese and English).\n2. If the search results do not contain the answer, say so plainly (PT: \"Não encontro essa informação no site da Coverflex.\" / EN: \"I couldn't find that on the Coverflex website.\"). In that case do NOT add a source line, and ALWAYS add one helpful sentence offering to talk to the team (PT: https://www.coverflex.com/pt/falar · EN: https://www.coverflex.com/en-pt/lets-talk). Never leave the user at a dead end. NEVER guess prices, numbers, dates, or tax/legal figures.\n3. LANGUAGE: always reply in the language of the user's latest message (Portuguese, English, Spanish or Italian). Portuguese replies use European Portuguese with \"tu\" (like the Coverflex website). The welcome message being in Portuguese does not matter.\n4. Be concise: 2–5 sentences or a short bullet list. Friendly, no jargon.\n5. End every factual answer (not \"not found\" answers) with the source page(s), using the `url` from the search results metadata. Label it \"Fonte:\" in Portuguese answers and \"Source:\" in English answers.\n6. Buying intent (pricing, plan comparisons, implementation, contracts, \"how do we start\"): after the source, add ONE full sentence inviting them to book a demo, with the link inside the sentence. Never output the link on its own. Examples — PT: \"Se quiseres ver a Coverflex em ação, podes agendar uma demonstração aqui: https://www.coverflex.com/pt/falar\" · EN: \"If you'd like to see Coverflex in action, you can book a demo here: https://www.coverflex.com/en-pt/lets-talk\". Do not repeat it if your previous answer already included it.\n7. If the user is an employee asking about their own card, balance or account, explain you help companies evaluating Coverflex and point them to support: https://help.coverflex.com\n8. If sources disagree (e.g. different prices on different pages), give the most specific information, mention it may depend on the case, and suggest confirming with the team.\n9. Off-topic requests (not about Coverflex or employee benefits): decline politely and steer back to how you can help.\n10. Greetings and small talk do not need a search.\n11. OTHER COUNTRIES: you only have information about Coverflex in Portugal, and products, prices and tax rules differ by country. If the user writes in Spanish or Italian, or says their company is outside Portugal, do NOT search and do NOT describe any product or price. Reply only with this message, translated into the user's language: \"This assistant only covers Coverflex in Portugal. Coverflex is also available in Spain (https://www.coverflex.com/es) and Italy (https://www.coverflex.com/it), where you'll find the products and prices for your country and can talk to the local team.\"\n12. COMPETITORS: if asked to compare Coverflex with other providers (e.g. Edenred, Pluxee), say you can only speak about Coverflex based on its website. Never claim Coverflex is better or cheaper, and never state anything about competitors. You may share relevant Coverflex facts and suggest talking to the team for a detailed comparison.\n13. ACCURACY: do not generalise a fact about one product to the whole offer (e.g. the meal card is free for companies; that does not mean everything is free).\n\nPLANS AND PRICING NOTE\n- The current plans are Starter, Plus and Total, as shown on the pricing page (https://www.coverflex.com/pt/precos · https://www.coverflex.com/en-pt/pricing). For any question about plans, prices or what a plan includes, base the answer on the pricing page passages; search again for the pricing page if they are not in the results.\n- Some other pages still mention older plan names (e.g. \"plano Wallet\") or older prices. Do not present those as current plans or prices.\n- The Starter plan currently costs 0€ per employee/month. The website also shows an older 1,50€ price crossed out: do not mention the 1,50€ and do not call it a promotion or discount. Simply say that Starter is currently 0€ per employee/month.",
+          "enableStreaming": false
         }
       },
-      "id": "56f150c5-12f4-4955-988c-e0202c2854d0",
-      "name": "Coverflex assistant (agent)",
+      "id": "6e9807f8-9f94-4774-86a2-4d4d88935e7d",
+      "name": "Coverflex Assistant",
       "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 1.7,
+      "typeVersion": 3.1,
       "position": [
-        760,
-        560
-      ]
+        304,
+        704
+      ],
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000,
+      "onError": "continueErrorOutput"
     },
     {
       "parameters": {
-        "modelName": "models/gemini-flash-lite-latest",
+        "modelName": "models/gemini-3.8-flash",
         "options": {
-          "temperature": 0.2,
-          "maxOutputTokens": 800
+          "temperature": 0.2
         }
       },
-      "id": "9767d368-e50c-4ba5-92fd-bd81f52c364d",
-      "name": "Gemini (chat model)",
+      "id": "6608bd1b-5a19-46d9-90e4-96c09b0da678",
+      "name": "Gemini 3.8 Flash (fallback)",
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
+      "typeVersion": 1.2,
       "position": [
-        620,
-        780
-      ]
+        144,
+        1152
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "P26zG91JKY8qBi5n",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     },
     {
       "parameters": {
-        "contextWindowLength": 10
+        "contextWindowLength": 30
       },
-      "id": "2af4f8ab-84dc-4813-ba9f-8cd8880bae53",
-      "name": "Memory (last 10 messages)",
+      "id": "86aab7ed-fee0-4865-8ace-ce799dc0c028",
+      "name": "Chat Memory (last 30)",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
-      "typeVersion": 1.3,
+      "typeVersion": 1.4,
       "position": [
-        780,
-        780
+        320,
+        944
       ]
     },
     {
       "parameters": {
         "mode": "retrieve-as-tool",
-        "toolName": "coverflex_knowledge_base",
-        "toolDescription": "Search Coverflex's website content (products, pricing plans, FAQ, meal card, insurance, childcare, Flexpay, budgets, pay transparency, job offers, customers). Use it for every question about Coverflex.",
+        "toolDescription": "Searches the official Coverflex website content (Portugal, PT and EN pages: products, plans and pricing, meal card, insurance, childcare vouchers, Flexpay, budgets, pay transparency, solutions by company size and role, FAQs). Input: a short search query describing what the user wants to know. Returns the 8 most relevant text passages with their source URL.",
         "pineconeIndex": {
           "__rl": true,
-          "value": "coverflex-kb",
           "mode": "list",
+          "value": "coverflex-kb",
           "cachedResultName": "coverflex-kb"
         },
-        "topK": 5,
+        "topK": 8,
         "options": {
-          "pineconeNamespace": "coverflex-en-pt"
+          "pineconeNamespace": "coverflex-site"
         }
       },
-      "id": "0cd050d9-a9a7-4993-9ec8-a70f24aa1a79",
-      "name": "Coverflex knowledge base (tool)",
+      "id": "f9512b5b-a74e-4e58-93d9-f0f398c66a51",
+      "name": "coverflex_website_search",
       "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
-      "typeVersion": 1.1,
+      "typeVersion": 1.3,
       "position": [
-        960,
-        780
-      ]
+        528,
+        944
+      ],
+      "credentials": {
+        "pineconeApi": {
+          "id": "hPpCWY35tN02nK2C",
+          "name": "Pinecone account"
+        }
+      }
     },
     {
-      "parameters": {
-        "modelName": "models/gemini-embedding-001"
-      },
-      "id": "5af30461-459b-4fbe-affd-8c0d6f8a8156",
-      "name": "Gemini embeddings (query)",
+      "parameters": {},
+      "id": "e49495b1-fecb-4635-9532-c7616bdf665b",
+      "name": "Gemini Embeddings (query)",
       "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
       "typeVersion": 1,
       "position": [
-        960,
-        980
+        608,
+        1152
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "P26zG91JKY8qBi5n",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-3.5-flash-lite",
+        "options": {
+          "temperature": 0.2
+        }
+      },
+      "id": "28c15fad-74ac-44da-9d49-afcb44aebad8",
+      "name": "Gemini 3.5 Flash-Lite",
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        144,
+        944
+      ],
+      "credentials": {
+        "googlePalmApi": {
+          "id": "P26zG91JKY8qBi5n",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## 1 · Knowledge base (run manually)\n- 41 hand-picked pages from coverflex.com (Portugal, PT + EN): products, pricing, solutions, FAQs. Blog and creche directory left out on purpose.\n- Cleaning: drop scripts and menus. Any line repeated on 40%+ of pages is menu/footer, so it goes. Blocks repeated across pages are kept only once. Headings are kept so FAQ answers stay with their question.\n- Split into ~1,000-character chunks, embed with Gemini, store in Pinecone with the page URL.\n- One page at a time with a 30s wait: the Gemini free tier limits requests per minute and per day.",
+        "height": 260,
+        "width": 640,
+        "color": 7
+      },
+      "id": "3a0e79ff-c449-42c0-8372-cbd94353386b",
+      "name": "Note: Knowledge base",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        -496
       ]
     },
     {
       "parameters": {
-        "jsCode": "// Two sitemaps: English (Portugal) and Portuguese. Add /es or /it sitemaps here to cover more markets.\nreturn [\n  { json: { sitemap: 'https://www.coverflex.com/en-pt/pages-sitemap.xml' } },\n  { json: { sitemap: 'https://www.coverflex.com/pt/pages-sitemap.xml' } },\n];"
+        "content": "## 2 · Prospect chatbot (public chat)\n- The agent searches the knowledge base (top 8 passages) before answering anything about Coverflex.\n- It answers only from what it finds, cites the page, and says so when the site doesn't have the answer.\n- PT or EN (Spain/Italy get pointed to their own site). Suggests a demo when there's buying intent. Sends employees to the help centre.\n- Gemini 3.5 Flash-Lite, with 3.8 Flash as fallback and 5 retries; if all fail, a friendly \"please try again\" message. Remembers the conversation (last 30 entries).",
+        "height": 230,
+        "width": 600,
+        "color": 7
       },
-      "id": "ca3d5fea-43e0-4f3b-becf-a620ef87e664",
-      "name": "Sitemaps to read",
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
+      "id": "e5be6077-4e49-459b-8238-85edcc1c1206",
+      "name": "Note: Prospect chatbot",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
       "position": [
-        600,
-        -280
+        -48,
+        448
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "friendly-output",
+              "name": "output",
+              "value": "Sorry, I couldn't read your message, can you try again?\nDesculpa, não consegui ler a tua mensagem, podes tentar novamente?",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1cf3a8e6-614d-4f0a-b278-74bbd5db225c",
+      "name": "Friendly Error Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        704,
+        784
       ]
     }
   ],
+  "pinData": {},
   "connections": {
-    "Run ingestion (manual)": {
+    "Run Ingestion": {
       "main": [
         [
           {
-            "node": "Sitemaps to read",
+            "node": "Curated Page List",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Filter product & FAQ pages": {
+    "Curated Page List": {
       "main": [
         [
           {
-            "node": "Fetch page HTML",
+            "node": "Fetch Page HTML",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Fetch page HTML": {
+    "Fetch Page HTML": {
       "main": [
         [
           {
-            "node": "Clean HTML to text",
+            "node": "Clean HTML to Markdown",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Clean HTML to text": {
-      "main": [
+    "Gemini Embeddings (ingest)": {
+      "ai_embedding": [
         [
           {
-            "node": "Pinecone: insert chunks",
-            "type": "main",
+            "node": "Insert into Pinecone",
+            "type": "ai_embedding",
             "index": 0
           }
         ]
       ]
     },
-    "Load page text + metadata": {
+    "Page Loader (+ metadata)": {
       "ai_document": [
         [
           {
-            "node": "Pinecone: insert chunks",
+            "node": "Insert into Pinecone",
             "type": "ai_document",
             "index": 0
           }
         ]
       ]
     },
-    "Split into chunks": {
+    "Markdown Splitter (1000/150)": {
       "ai_textSplitter": [
         [
           {
-            "node": "Load page text + metadata",
+            "node": "Page Loader (+ metadata)",
             "type": "ai_textSplitter",
             "index": 0
           }
         ]
       ]
     },
-    "Chat with prospects": {
+    "Loop: One Page at a Time": {
       "main": [
+        null,
         [
           {
-            "node": "Coverflex assistant (agent)",
+            "node": "Insert into Pinecone",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Memory (last 10 messages)": {
-      "ai_memory": [
+    "Insert into Pinecone": {
+      "main": [
         [
           {
-            "node": "Coverflex assistant (agent)",
-            "type": "ai_memory",
+            "node": "Wait 30s (Gemini rate limit)",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Coverflex knowledge base (tool)": {
+    "Prospect Chat": {
+      "main": [
+        [
+          {
+            "node": "Coverflex Assistant",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coverflex_website_search": {
       "ai_tool": [
         [
           {
-            "node": "Coverflex assistant (agent)",
+            "node": "Coverflex Assistant",
             "type": "ai_tool",
             "index": 0
           }
         ]
       ]
     },
-    "Sitemaps to read": {
-      "main": [
-        [
-          {
-            "node": "Get sitemaps",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get sitemaps": {
-      "main": [
-        [
-          {
-            "node": "Filter product & FAQ pages",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Gemini embeddings (ingest)": {
+    "Gemini Embeddings (query)": {
       "ai_embedding": [
         [
           {
-            "node": "Pinecone: insert chunks",
+            "node": "coverflex_website_search",
             "type": "ai_embedding",
             "index": 0
           }
         ]
       ]
     },
-    "Gemini embeddings (query)": {
-      "ai_embedding": [
+    "Wait 30s (Gemini rate limit)": {
+      "main": [
         [
           {
-            "node": "Coverflex knowledge base (tool)",
-            "type": "ai_embedding",
+            "node": "Loop: One Page at a Time",
+            "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Gemini (chat model)": {
+    "Gemini 3.5 Flash-Lite": {
       "ai_languageModel": [
         [
           {
-            "node": "Coverflex assistant (agent)",
+            "node": "Coverflex Assistant",
             "type": "ai_languageModel",
             "index": 0
           }
         ]
       ]
+    },
+    "Clean HTML to Markdown": {
+      "main": [
+        [
+          {
+            "node": "Loop: One Page at a Time",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Chat Memory (last 30)": {
+      "ai_memory": [
+        [
+          {
+            "node": "Coverflex Assistant",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Coverflex Assistant": {
+      "main": [
+        null,
+        [
+          {
+            "node": "Friendly Error Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 3.8 Flash (fallback)": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Coverflex Assistant",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
     }
   },
+  "active": true,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": true
   },
-  "pinData": {},
-  "active": false
+  "versionId": "a278ea9e-e6e2-4412-8232-298aff0ce929",
+  "meta": {
+    "aiBuilderAssisted": true,
+    "builderVariant": "mcp",
+    "instanceId": "bf6afaee59b73c1f1ab42431b72676a35133ea5b585d5e922b2540e477d7ea81"
+  },
+  "nodeGroups": [],
+  "id": "1l9QUjojMjoIEaWo",
+  "tags": []
 }
